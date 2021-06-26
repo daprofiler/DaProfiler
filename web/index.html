@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DaProfiler Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/waves.min.css" type="text/css" rel="stylesheet">
+    <link href="./css/nanoscroller.css" type="text/css" rel="stylesheet" >
+    <link href="./css/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="./css/menu-light.css" type="text/css" rel="stylesheet">
+    <link href="./css/style.css" type="text/css" rel="stylesheet">
+    <link href="./cg/style.css" type="text/css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-default yamm navbar-fixed-top">
+        <div class="container-fluid">
+            <button type="button" class="navbar-minimalize minimalize-styl-2  pull-left "><i
+                    class="fa fa-bars"></i></button>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle button-wave" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false"><b>github.com/dalunacrobate/DaProfiler</b> <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Infos</li>
+                            <li><a href="https://github.com/dalunacrobate/DaProfiler">Open</a></li>
+                            <li><a href="https://github.com/dalunacrobate/">Dalunacrobate Git</a></li>
+                            <li><a href="https://discord.gg/2RStanwK2S">Discord</a></li>
+                            <li><a href="mailto:daluna_pro@protonmail.ch">Send Me email</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle button-wave" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false"><b>UI</b> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Infos</li>
+                            <li><a href="https://github.com/DrBlackWolf/">DrBlackWolf Git</a></li>
+                            <li><a href="https://cnil.me">Website</a></li>
+                            <li><a href="mailto:contact@cnil.me">Send Me email</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="page">
+
+        <nav class="navbar-aside navbar-static-side" role="navigation">
+            <div class="sidebar-collapse nano">
+                <div class="nano-content">
+                    <ul class="nav metismenu" id="side-menu">
+                        <li class="nav-header">
+                            <div class="dropdown side-profile text-left">
+                                <span style="display: block;">
+                                    <img alt="image" class="img-circle" src="images/ICON.png" width="40">
+                                </span>
+                                <span class="clear" style="display: block;"> <span class="block m-t-xs"> <strong
+                                            class="font-bold">gary papini </strong>
+                                    </span></span>
+                            </div>
+                        </li>
+                        <!---
+                        <li class="active">
+                            <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">DROP DOWN </span><span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li><a href="index.html">LINK01 </a></li>
+                            </ul>
+                        </li>-->
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+        <div id="wrapper">
+            <div class="content-wrapper container">
+                <!--
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title">
+                            <img src="./images/ban.png">
+                        </div>
+                    </div>
+                </div>--><!-- end .page title-->
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-card recent-activites">
+                            <!-- Start .panel -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Global Tree View</h4>
+                                <div class="panel-actions">
+                                    <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                                    <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+                                </div>
+                            </div>
+                            <div class="panel-body text-center">
+                                <div class="root"></div>
+                            </div>
+                        </div><!-- End .panel -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel panel-card recent-activites">
+                            <!-- Start .panel -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Account Stats</h4>
+                                <div class="panel-actions">
+                                    <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                                    <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+                                </div>
+                            </div>
+                            <div class="panel-body text-center">
+                                <div>
+                                    <canvas id="doughnutChart" height="242"></canvas>
+                                </div>
+
+                            </div>
+                        </div><!-- End .panel -->
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="panel panel-card recent-activites">
+                            <!-- Start .panel -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Accounts</h4>
+                                <div class="panel-actions">
+                                    <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                                    <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+                                </div>
+                            </div>
+                            <div class="panel-body text-center">
+                                <div>
+                                    <canvas id="barChart" height="242"></canvas>
+                                </div>
+
+
+                            </div>
+                        </div><!-- End .panel -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+    <div class="panel panel-card recent-activites">
+        <!-- Start .panel -->
+        <div class="panel-heading">
+            <h4 class="panel-title">Death Records</h4>
+            <div class="panel-actions">
+                <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr><th>Name</th><th>Loc</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Monsieur Michel  PAPINI</td><td> 71100 Chalon-sur-Saône</td></tr><tr><td>Madame Teresa  PAPINI née DE POMPEIS</td><td> 69009 Lyon</td></tr><tr><td>Monsieur Hervé  PAPINI</td><td> 52100 Saint-Dizier</td></tr><tr><td>Monsieur Hervé PAPINI</td><td> 83550 Vidauban</td></tr><tr><td>Madame Rose  PAPINI</td><td> 01300 Belley</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div><div class="col-sm-6">
+    <div class="panel panel-card recent-activites">
+        <!-- Start .panel -->
+        <div class="panel-heading">
+            <h4 class="panel-title"><img src='./img/instagram.png' height='25'/>Instagram </h4>
+            <div class="panel-actions">
+                <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr><th>Username</th><th>Obfuscated phone</th><th>Obfuscated Email</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>papinigary</td><td>+33 * ** ** ** 43</td><td>false</td></tr><tr><td>garypapini</td><td>false</td><td>p*******e@gmail.com</td></tr><tr><td>gabrielasilvinagarciapapini</td><td>false</td><td>g*******9@hotmail.com</td></tr><tr><td>papinisgarage</td><td>false</td><td>p*******e@o*****.com</td></tr><tr><td>andreagarciapapini72</td><td>+54 **** **-**68</td><td>a*******i@l*****.ar</td></tr><tr><td>lucianacarolinagarcia</td><td>false</td><td>l*******i@gmail.com</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div><div class="col-sm-4">
+    <div class="panel panel-card recent-activites">
+        <!-- Start .panel -->
+        <div class="panel-heading">
+            <h4 class="panel-title"><img src='./img/email.png' height='25'/> Emails </h4>
+            <div class="panel-actions">
+                <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr><th>Email</th></tr>
+                    </thead>
+                    <tbody>
+                        
+                </table>
+            </div>
+        </div>
+    </div>
+</div><div class="col-sm-4">
+    <div class="panel panel-card recent-activites">
+        <!-- Start .panel -->
+        <div class="panel-heading">
+            <h4 class="panel-title"><img src='./img/skype.png' height='25'/> Skype</h4>
+            <div class="panel-actions">
+                <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr><th>Account</th></tr>
+                    </thead>
+                    <tbody>
+                        
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/metisMenu.min.js"></script>
+    <script src="./js/jquery.nanoscroller.min.js"></script>
+    <script src="./js/jquery-jvectormap-1.2.2.min.js"></script>
+    <!-- Flot -->
+    <script src="./js/flot/jquery.flot.js"></script>
+    <script src="./js/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="./js/flot/jquery.flot.resize.js"></script>
+    <script src="./js/flot/jquery.flot.pie.js"></script>
+    <script src="./js/chartjs/Chart.min.js"></script>
+    <script src="./js/pace.min.js"></script>
+    <script src="./js/waves.min.js"></script>
+    <script src="./js/morris_chart/raphael-2.1.0.min.js"></script>
+    <script src="./js/morris_chart/morris.js"></script>
+    <script src="./js/jquery.sparkline.min.js"></script>
+    <script src="./js/jquery-jvectormap-world-mill-en.js"></script>
+    <script type="text/javascript" src="./js/custom.js"></script>
+    <!-- ChartJS-->
+    <script src="./js/chartjs/Chart.min.js"></script>
+
+    <!--page js-->
+    <script>
+        $("#sparkline8").sparkline([5, 6, 7, 2, 0, 4, 2, 4, 5, 7, 2, 4, 12, 14, 4, 2, 14, 12, 7], {
+            type: 'bar',
+            barWidth: 4,
+            height: '40px',
+            barColor: '#90EE90',
+            negBarColor: '#ADD8E6'
+        });
+        $(".sparkline8").sparkline([4, 2], {
+            type: 'pie',
+            sliceColors: ['#90EE90', '#ddd']
+        });
+        $(".sparkline9").sparkline([3, 2], {
+            type: 'pie',
+            sliceColors: ['#90EE90', '#ddd']
+        });
+        $(".sparkline10").sparkline([4, 1], {
+            type: 'pie',
+            sliceColors: ['#90EE90', '#ddd']
+        });
+        $(".sparkline11").sparkline([1, 3], {
+            type: 'pie',
+            sliceColors: ['#90EE90', '#ddd']
+        });
+        $(".sparkline12").sparkline([3, 5], {
+            type: 'pie',
+            sliceColors: ['#90EE90', '#ddd']
+        });
+        $(".sparkline13").sparkline([6, 2], {
+            type: 'pie',
+            sliceColors: ['#90EE90', '#ddd']
+        });
+
+        //moris chart
+        $(function () {
+
+            var barData = {
+                labels: ["Twitter", "Instagram", "Facebook", "Skype"],
+                datasets: [{
+                    label: "Account Found",
+                    fillColor: "#90EE90",
+                    strokeColor: "#ADD8E6",
+                    highlightFill: "#ADD8E6",
+                    highlightStroke: "#ADD8E6",
+                    data: [0, 6, 0, 0]
+                }]
+            };
+
+            var barOptions = {
+                scaleBeginAtZero: true,
+                scaleShowGridLines: true,
+                scaleGridLineColor: "rgba(0,0,0,.01)",
+                scaleGridLineWidth: 1,
+                barShowStroke: true,
+                barStrokeWidth: 1,
+                barValueSpacing: 1,
+                barDatasetSpacing: 1,
+                responsive: true
+            };
+
+
+            var ctx = document.getElementById("barChart").getContext("2d");
+            var myNewChart = new Chart(ctx).Bar(barData, barOptions);
+
+
+            var radarOptions = {
+                scaleShowLine: true,
+                angleShowLineOut: true,
+                scaleShowLabels: false,
+                scaleBeginAtZero: true,
+                angleLineColor: "rgba(0,0,0,.1)",
+                angleLineWidth: 1,
+                pointLabelFontStyle: "normal",
+                pointLabelFontSize: 10,
+                pointLabelFontColor: "#fff",
+                pointDot: true,
+                pointDotRadius: 3,
+                pointDotStrokeWidth: 1,
+                pointHitDetectionRadius: 20,
+                datasetStroke: true,
+                datasetStrokeWidth: 2,
+                datasetFill: true,
+                responsive: true
+            };
+
+
+            var doughnutData = [{
+                    value: 0,
+                    color: "#90EE90",
+                    highlight: "#01a8fe",
+                    label: "PersonnalLife"
+                },
+                {
+                    value: 2,
+                    color: "#ADD8E6",
+                    highlight: "#01a8fe",
+                    label: "SocialMedias"
+                }
+            ];
+
+            var doughnutOptions = {
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 4,
+                percentageInnerCutout: 45, // This is 0 for Pie charts
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false,
+                responsive: true
+            };
+
+
+            var ctx = document.getElementById("doughnutChart").getContext("2d");
+            var myNewChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.8.0-alpha.1/d3-tip.js'></script>
+    <script src="./cg/script.js"></script>
+</body>
+
+</html>
