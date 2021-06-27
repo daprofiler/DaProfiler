@@ -19,6 +19,18 @@ git clone https://github.com/TheRealDalunacrobate/DaProfiler.git
 cd DaProfiler
 pip install -r requirements.txt
 ```
+
+## 🛠 Installation - Windows
+
+### - Logiciel a installer
+Python 3.8 - https://www.python.org/downloads/release/python-383/
+
+### - Script .bat to launch a terminal in the current directory
+clic on `localCMD.bat`
+
+### - Error: 
+`'pip' n'est pas reconnu en tant que commande interne sur Windows 10` | Solution:  [Video Youtube](https://www.youtube.com/watch?v=pjCWtppLN3k)
+
 ## 💻 Use
 ```bash
 profiler.py -n [NAME] -ln [LAST NAME] -l True -O txt_file.txt
@@ -29,14 +41,11 @@ profiler.py -n [NAME] -ln [LAST NAME] -l True -O txt_file.txt
 usage: profiler.py [-h] [-n NAME] [-l LOGGING] [-ln LASTNAME] [-O OUTPUT]
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -n NAME, --name NAME  Victim name
-  -l LOGGING, --logging LOGGING
-                        Enable terminal logging (Optional)
-  -ln LASTNAME, --lastname LASTNAME
-                        Last name of victim
-  -O OUTPUT, --output OUTPUT
-                        ( -O output.txt )
+  -h, --help                     Show this help message and exit
+  -n or --name NAME              Victim name
+  -l or --logging LOGGING        Enable terminal logging (Optional)
+  -ln or --lastname LASTNAME     Last name of victim
+  -O or --output OUTPUT          ( txt )
 ```
 
 ## 📷 Demo
@@ -52,9 +61,10 @@ Add your premium api keys :
 + Go to [modules\api_modules](https://github.com/TheRealDalunacrobate/DaProfiler/tree/main/modules/api_modules) then open your API module (ex Leakcheck), replace "YOUR_KEY" to your key, save and quit your text editor.
 
 ##  📝 Contact
-Mail : _daluna_pro@protonmail.ch_. <br>
+Mail : _daluna_pro@protonmail.ch_ <br>
 Discord : `Dalunacrobate#6166` <br>
 Discord server : [https://discord.gg/2RStanwK2S](https://discord.gg/2RStanwK2S)
+Follow: [me](https://github.com/TheRealDalunacrobate)
 
 
 ## 📚 Contributions
