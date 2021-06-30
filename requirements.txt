@@ -3,3 +3,4 @@ bs4
 colorama
 treelib
 leakcheck
+update_check
