@@ -1,3 +1,19 @@
+from update_check import update
+
+def update_funct():
+    print("\nUpdating Modules ...\n")
+    update("modules/copainsdavant_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/copainsdavant_search.py")
+    update("modules/death_records.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/death_records.py")
+    update("modules/dirigeants_bfmtv.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/dirigeants_bfmtv.py")
+    update("modules/facebook_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/facebook_search.py")
+    update("modules/mail_check.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/mail_check.py")
+    update("modules/mail_gen.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/mail_gen.py")
+    update("modules/pagesblanches_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/pagesblanches_search.py")
+    update("modules/skype_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/skype_search.py")
+    update("modules/twitter_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/twitter_search.py")
+    update("profiler.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/profiler.py")
+update_funct()
+
 from json import decoder
 import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, http.server, socketserver, webbrowser
 
@@ -46,7 +62,7 @@ else:
     os.system('clear')
 
 print("DaProfiler - Inspired from Profiler CToS")
-print("Github : "+Fore.YELLOW+"https://github.com/TheRealDalunacrobate\n\nSearch in progress ..."+Fore.RESET)
+print("Github : "+Fore.YELLOW+"https://github.com/TheRealDalunacrobate"+Fore.RESET+"\n\nSearch in progress ...")
 print("\r")
 
 possible_usernames = []
