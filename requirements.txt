@@ -4,3 +4,4 @@ colorama
 treelib
 leakcheck
 update_check
+httpx
