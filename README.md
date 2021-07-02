@@ -54,7 +54,7 @@ Add your premium api keys :
 ##  📝 Contact
 Mail : _daluna_pro@protonmail.ch_. <br>
 Discord : `Dalunacrobate#6166` <br>
-Discord server : [https://discord.gg/2RStanwK2S](https://discord.gg/2RStanwK2S)
+Discord server : [Here](https://discord.gg/4h57QSsEYa)
 
 
 ## 📚 Contributions
