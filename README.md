@@ -38,6 +38,11 @@ optional arguments:
   -O OUTPUT, --output OUTPUT
                         ( -O output.txt )
 ```
+```
+Update DaProfiler : 
+
+C:\Users\User\> python3 profiler.py
+```
 
 ## 📷 Demo
 ![alt text](https://i.ibb.co/YPHwv39/hh.png)
