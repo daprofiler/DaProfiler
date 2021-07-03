@@ -46,7 +46,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
 parser.add_argument('-l','--logging',help="Enable terminal logging (Optional)")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
-parser.add_argument('-u','--update',help='Update DaProfiler')
 parser.add_argument('-O','--output',help="( -O output.txt )")
 parser.add_argument('-W','--webui',help='Open HTML report at the end')
 args = parser.parse_args()
@@ -56,11 +55,6 @@ pren     = (args.name)
 log      = (args.logging)
 output   = (args.output)
 web_arg  = (args.webui)
-upgrade  = (parser.update)
-
-if upgrade is not None:
-    update_funct()
-    sys.exit()
 
 if sys.platform == 'win32':
     os.system('cls')
