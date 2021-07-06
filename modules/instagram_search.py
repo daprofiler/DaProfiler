@@ -338,7 +338,7 @@ def getInstagramEmailFromBio(username):
     return get_info_from_bio(bioo)
 
 def ig_search(name,pren):
-    url = "https://smihub.com/search?query={}+{}".format(pren,name)
+    url = "https://www.picuki.com/search/{}+{}".format(pren,name)
 
     r = requests.get(url=url)
     page = r.content.decode()
@@ -347,14 +347,10 @@ def ig_search(name,pren):
 
     profiles = []
 
-    profiless = soup.find_all('div',{'class':'content__text'})
+    profiless = soup.find_all('div',{'class':'result-username'})
     for i in profiless[0:10]:
         i = str(i)
-        username = (i.split('</a><p>')[1].replace('</p></div>',''))
-        at_username = (i.split('</a><p>')[0].split('Instagram\'s posts" class="profile-name-link" href="')[1].split('">')[1])
-        profile_formated = ('{}\t| {}'.format(at_username,username))
-        if name.lower() in profile_formated.lower() and name.lower() in profile_formated.lower():
-            profiles.append(str(profile_formated))
+        profiles.append(i.text.strip())
     return profiles
 
 # ============================================================================
