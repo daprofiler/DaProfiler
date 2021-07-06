@@ -301,7 +301,7 @@ if instagram_results is not None:
         acc_json_list = []
         for i in instagram_results:
             chars = "abcdefghijklmnopqrstuvwxyz1234567890"
-            username = i.split('|')[0].replace('@','').strip()
+            username = i
             number_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
             bio_infos = instagram_search.getInstagramEmailFromBio(username)
             tree.create_node(i,number_ski,parent=13)
