@@ -473,23 +473,7 @@ except FileNotFoundError:
         f.close()
 
 def webui():
-    url = 'https://cnil.me/api/osint/daprofiler/ui'
-    myobj = json.dumps(data_export)
-    x = requests.post(url, data = myobj)
-    y = json.loads(x.text) 
-    print("Website Done")
-    f = open("./web/index.html", "w")
-    f.write(y['content']["webpage"])
-    f.close()
-    f = open("./web/cg/data.json", "w")
-    f.write(y['content']["arbre"])
-    f.close()
-    Handler = http.server.SimpleHTTPRequestHandler
-
-    webbrowser.open('http://127.0.0.1:8000/web/', new=2)
-    with socketserver.TCPServer(("", 8000), Handler) as httpd:
-        print("serving at port", 8000)
-        httpd.serve_forever()
+    print("WEB UI is under maintenance")
 
 if web_arg is not None:
     webui()
