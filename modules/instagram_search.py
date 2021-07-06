@@ -350,7 +350,7 @@ def ig_search(name,pren):
     profiless = soup.find_all('div',{'class':'result-username'})
     for i in profiless[0:10]:
         i = str(i)
-        profiles.append(i.text.strip())
+        profiles.append(i.replace('<div class="result-username">','').replace('</div>','').strip())
     return profiles
 
 # ============================================================================
