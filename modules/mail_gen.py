@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 from modules import mail_check
 
 def check(name,pren):
+    name = name.lower()
+    pren = pren.lower()
     results = [
         "{}.{}@gmail.com".format(name,pren),
         "{}.{}@yahoo.com".format(name,pren),
@@ -44,6 +46,7 @@ def skype2email(name,pren):
     valid_emails = []
 
     for i in profiless:
+        i = i.lower()
         emails = [
             i+"@aol.com",
             i+"@yahoo.com",
