@@ -47,7 +47,7 @@ parser.add_argument("-n", "--name", help="Victim name")
 parser.add_argument('-l','--logging',help="Enable terminal logging (Optional)")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
 parser.add_argument('-O','--output',help="( -O output.txt )")
-parser.add_argument('-W','--webui',help='Open HTML report at the end')
+parser.add_argument('-W','--webui',help='Open HTML report at the end if is "True" after')
 args = parser.parse_args()
 
 name     = (args.lastname)
@@ -472,8 +472,14 @@ except FileNotFoundError:
         json.dump(data_export,f,indent=4,ensure_ascii=False)
         f.close()
 
-def webui():
-    print("WEB UI is under maintenance")
+def webui(url):
+    print("Open: https://cnil.me/pub-api/daprofiler/p.html?"+url);
 
-if web_arg is not None:
-    webui()
+def sendToHub():
+    url = 'https://cnil.me/pub-api/daprofiler/new'
+    myobj = json.dumps(data_export)
+    url = requests.post(url, data = myobj)
+    if web_arg is not None:
+        webui(url.text)
+
+sendToHub()
