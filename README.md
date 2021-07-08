@@ -68,5 +68,3 @@ Discord server : [Here](https://discord.gg/4h57QSsEYa)
 ## Contributions
 All suggestions are welcome.
 
-![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)
-
