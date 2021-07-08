@@ -1,5 +1,5 @@
 from update_check import update
-
+"""
 def update_funct():
     print("\nUpdating Modules ...\n")
     update("modules/copainsdavant_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/copainsdavant_search.py")
@@ -13,6 +13,7 @@ def update_funct():
     update("modules/twitter_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/twitter_search.py")
     update("profiler.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/profiler.py")
 update_funct()
+"""
 
 from json import decoder
 import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, http.server, socketserver, webbrowser
@@ -473,13 +474,14 @@ except FileNotFoundError:
         f.close()
 
 def webui(url):
-    print("Open: https://cnil.me/pub-api/daprofiler/p.html?"+url);
+    print("Open: https://cnil.me/pub-api/daprofiler/p.html?"+url)
 
-def sendToHub():
+def sendToHub(data_export):
     url = 'https://cnil.me/pub-api/daprofiler/new'
     myobj = json.dumps(data_export)
     url = requests.post(url, data = myobj)
     if web_arg is not None:
         webui(url.text)
 
-sendToHub()
+if web_arg is not None:
+    sendToHub(data_export)
