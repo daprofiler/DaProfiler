@@ -11,7 +11,7 @@ For educational purposes only.
 DaProfiler allows you to create a profile on your **target** based in France only.
 The particularity of this program is its ability to find the e-mail addresses of a target via searches on [Skype](https://www.skype.com/) and tests of combining e-mail addresses followed by a check to know if the email address exists or not (Beware of false negatives, the results displayed do not necessarily relate to the target you are looking for if another person has the same name - first name). DaProfiler is also able to check the words of a an instagram bio to find interesting information such as : **Email addresses**, **Paypal.me profiles**,**Sexual Orientation**,**City**,**School**,**Age**,**Ethnicity**,**Religions**,**Hobbies** and more ...
 
-## 🛠 Installation - Linux
+## Installation - Linux
 
 Python 3.8 required
 ```bash
@@ -19,7 +19,7 @@ git clone https://github.com/TheRealDalunacrobate/DaProfiler.git
 cd DaProfiler
 pip install -r requirements.txt
 ```
-## 💻 Use
+## Use
 ```bash
 profiler.py -n [NAME] -ln [LAST NAME] -l True -O txt_file.txt
 (Target Name) (Target Last Name) (Enable Terminal Logging) (Output to txt_file.txt)
@@ -44,10 +44,10 @@ Update DaProfiler :
 C:\Users\User\> python3 profiler.py
 ```
 
-## 📷 Demo
+## Demo
 ![alt text](https://i.ibb.co/YPHwv39/hh.png)
 
-## 🛠 Api
+## Api
 | Source | Service type | Subscription | Key in code |
 | :---: | :---: | :---: | :---: |
 | Leakcheck.net | Breach Search | Premium 🔑 | ❌ | 
@@ -56,13 +56,13 @@ C:\Users\User\> python3 profiler.py
 Add your premium api keys :
 + Go to [modules\api_modules](https://github.com/TheRealDalunacrobate/DaProfiler/tree/main/modules/api_modules) then open your API module (ex Leakcheck), replace "YOUR_KEY" to your key, save and quit your text editor.
 
-##  📝 Contact
+## Contact
 Mail : _daluna_pro@protonmail.ch_. <br>
 Discord : `Dalunacrobate#6166` <br>
 Discord server : [Here](https://discord.gg/4h57QSsEYa)
 
 
-## 📚 Contributions
+## Contributions
 All suggestions are welcome.
 
 ![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)
