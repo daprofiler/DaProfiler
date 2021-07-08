@@ -474,7 +474,7 @@ except FileNotFoundError:
         f.close()
 
 def webui(url):
-    print("Open: https://cnil.me/pub-api/daprofiler/p.html?"+url)
+    webbrowser.open("https://cnil.me/pub-api/daprofiler/p.html?"+url)
 
 def sendToHub(data_export):
     url = 'https://cnil.me/pub-api/daprofiler/new'
