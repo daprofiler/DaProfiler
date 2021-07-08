@@ -1,5 +1,5 @@
 from update_check import update
-"""
+
 def update_funct():
     print("\nUpdating Modules ...\n")
     update("modules/copainsdavant_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/copainsdavant_search.py")
@@ -13,7 +13,7 @@ def update_funct():
     update("modules/twitter_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/twitter_search.py")
     update("profiler.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/profiler.py")
 update_funct()
-"""
+
 
 from json import decoder
 import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, http.server, socketserver, webbrowser
