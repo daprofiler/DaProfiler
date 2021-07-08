@@ -20,6 +20,7 @@ cd DaProfiler
 pip install -r requirements.txt
 ```
 ## Use
+
 ```bash
 profiler.py -n [NAME] -ln [LAST NAME] -l True -O txt_file.txt
 (Target Name) (Target Last Name) (Enable Terminal Logging) (Output to txt_file.txt)
@@ -38,6 +39,8 @@ optional arguments:
   -O OUTPUT, --output OUTPUT
                         ( -O output.txt )
 ```
+### WARNING !
+If you use **-W True** argument, your results will be saved on a server to use that data in a the DaProfiler search engine (**soon**). **But keep it mind that you can ask, whenever you want to delete it from the server**.
 ```
 Update DaProfiler : 
 
