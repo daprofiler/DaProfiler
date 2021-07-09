@@ -12,8 +12,6 @@ def update_funct():
     update("modules/skype_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/skype_search.py")
     update("modules/twitter_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/twitter_search.py")
     update("profiler.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/profiler.py")
-update_funct()
-
 
 from json import decoder
 import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, http.server, socketserver, webbrowser
@@ -49,13 +47,15 @@ parser.add_argument('-l','--logging',help="Enable terminal logging (Optional)")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
 parser.add_argument('-O','--output',help="( -O output.txt )")
 parser.add_argument('-W','--webui',help='Open HTML report at the end if is "True" after')
+parser.add_argument('-u','--update',help="Update DaProfiler")
 args = parser.parse_args()
 
-name     = (args.lastname)
-pren     = (args.name)
-log      = (args.logging)
-output   = (args.output)
-web_arg  = (args.webui)
+name       = (args.lastname)
+pren       = (args.name)
+log        = (args.logging)
+output     = (args.output)
+web_arg    = (args.webui)
+do_upgrade = (args.update)
 
 if sys.platform == 'win32':
     os.system('cls')
@@ -485,3 +485,6 @@ def sendToHub(data_export):
 
 if web_arg is not None:
     sendToHub(data_export)
+
+if do_upgrade.lower() == "true":
+    update_funct()
