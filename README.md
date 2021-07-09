@@ -29,7 +29,6 @@ profiler.py -n [NAME] -ln [LAST NAME] -l True -O txt_file.txt
 
 usage: profiler.py [-h] [-n NAME] [-l LOGGING] [-ln LASTNAME] [-O OUTPUT]
 
-optional arguments:
   -h, --help            show this help message and exit
   -n NAME, --name NAME  Victim name
   -l LOGGING, --logging LOGGING
@@ -37,14 +36,18 @@ optional arguments:
   -ln LASTNAME, --lastname LASTNAME
                         Last name of victim
   -O OUTPUT, --output OUTPUT
-                        ( -O output.txt )
+                        ( -O output.txt ) (Optional)
+  -W WEBUI, --webui WEBUI
+                        Open HTML report at the end if is "True" after excecution (Optional)
+  -u UPDATE, --update UPDATE
+                        Update DaProfiler (Optional)
 ```
 ### WARNING !
 If you use **-W True** argument, your results will be saved on a server to use that data in a the DaProfiler search engine (**soon**). **But keep it mind that you can ask, whenever you want to delete it from the server**.
 ```
 Update DaProfiler : 
 
-C:\Users\User\> python3 profiler.py
+C:\Users\User\> python3 profiler.py -u True
 ```
 
 ## Demo
