@@ -486,5 +486,8 @@ def sendToHub(data_export):
 if web_arg is not None:
     sendToHub(data_export)
 
-if do_upgrade.lower() == "true":
-    update_funct()
+try:
+    if do_upgrade.lower() == "true":
+        update_funct()
+except:
+    pass
