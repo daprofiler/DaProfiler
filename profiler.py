@@ -1,3 +1,4 @@
+from colorama.initialise import init
 from update_check import update
 
 def update_funct():
@@ -16,10 +17,9 @@ def update_funct():
 from json import decoder
 import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, http.server, socketserver, webbrowser
 
-from colorama import Fore, init, Back, Style
-init(convert=True)
 from treelib  import Node, Tree
-
+from colorama import Fore, Back, Style, init
+init(autoreset=True)
 from modules  import skype_search
 from modules  import pagesblanches_search
 from modules  import copainsdavant_search
@@ -63,7 +63,7 @@ else:
     os.system('clear')
 
 print("DaProfiler - Inspired from Profiler CToS")
-print("Github : "+Fore.YELLOW+"https://github.com/TheRealDalunacrobate"+Fore.RESET+"\n\nSearch in progress ...")
+print("Github : https://github.com/TheRealDalunacrobate\n\nSearch in progress ...")
 print("\r")
 
 possible_usernames = []
@@ -192,7 +192,7 @@ if pagesblanche is not None:
     data_export['AdressPhone']['Adress'] = adress
 
     write("Adress - Phone : ",[str('Full Name : '+full_name),str('Adress : '+adress),str('Phone : '+phone)])
-    tree.create_node(Fore.YELLOW+"Adress - Phone"+Fore.RESET,2,parent=1)
+    tree.create_node("Adress - Phone",2,parent=1)
     tree.create_node("Full Name : {}".format(full_name),22,parent=2)
     tree.create_node("Adress    : {}".format(adress),33,parent=2)
     tree.create_node("Phone     : {}".format(phone),44,parent=2)
@@ -207,7 +207,7 @@ if copainsdavant_results is not None:
     personnal_life.append('.')
     data_export['CopainsDavant']['Exists'] = True
     try:
-        tree.create_node(Fore.RED+"Copains d'avant"+Fore.RESET,3,parent=1)
+        tree.create_node("Copains d'avant",3,parent=1)
         tree.create_node('Full Name    : {}'.format(copainsdavant_results['full_name']),77,parent=3)
         tree.create_node('Born Date    : {}'.format(copainsdavant_results['born']),88,parent=3)
         tree.create_node('Location : {}'.format(copainsdavant_results['localisation']),99,parent=3)
@@ -264,7 +264,7 @@ if bfmtv_results is not None:
     data_export['Work']['Link']     = bfmtv_results['link'].replace('https://','')
 
     write('Work - Job : ',[str('Adress : '+bfmtv_results['addr']),str('Company : '+bfmtv_results['company']),str('Full Name : '+bfmtv_results['full_name']),str('Function : '+bfmtv_results['fonction']),str('Warrant : '+bfmtv_results['mandats']),str('URL : '+bfmtv_results['link'])])
-    tree.create_node(Fore.BLUE+"Work - Job"+Fore.RESET,4,parent=1)
+    tree.create_node("Work - Job",4,parent=1)
     tree.create_node('Adress    : {}'.format(bfmtv_results['addr']),888,parent=4)
     tree.create_node('Company   : {}'.format(bfmtv_results['company']),777,parent=4)
     tree.create_node('Link      : {}'.format(bfmtv_results['link']),666,parent=4)
@@ -277,7 +277,7 @@ if twitter_results is not None:
     data_export['Twitter']['Exists'] = True
     data_export['Twitter']['Accounts'] = twitter_results
     write(f'({str(len(twitter_results))}) Twitter : ',twitter_results)
-    tree.create_node(Fore.CYAN+"Twitter"+Fore.RESET,5,parent=1)
+    tree.create_node("Twitter",5,parent=1)
     for i in twitter_results:
         tree.create_node(i,parent=5)
 if skype_results is not None:
@@ -285,7 +285,7 @@ if skype_results is not None:
     data_export['Skype']['Exists'] = True
     data_export['Skype']['AccountList'] = skype_results
     write(f'({str(len(skype_results))}) Skype : ',skype_results)
-    tree.create_node(Fore.CYAN+"Skype"+Fore.RESET,6,parent=1)
+    tree.create_node("Skype",6,parent=1)
     tree.create_node("Accounts : {}".format(str(len(skype_results))),12,parent=6)
     for i in skype_results:
         chars = "abcdefghijklmnopqrstuvwxyz1234567890"
@@ -297,7 +297,7 @@ if instagram_results is not None:
     else:
         social_medias.append('.')
         data_export['Instagram']['Exists'] = True
-        tree.create_node(Fore.MAGENTA+"Instagram"+Fore.RESET,7,parent=1)
+        tree.create_node("Instagram",7,parent=1)
         tree.create_node('Accounts : {}'.format(str(len(instagram_results))),13,parent=7)
         acc_json_list = []
         for i in instagram_results:
@@ -389,9 +389,9 @@ if instagram_results is not None:
         data_export['Instagram']['AccountList'] = acc_json_list
 if possible_mail is not None:
     if len(possible_mail) != 0 or len(skype2mail) != 0:
-        tree.create_node(Fore.RED+'Emails extracted'+Fore.RESET,146,parent=1)
+        tree.create_node('Emails extracted',146,parent=1)
         if skype2mail is not None:
-            tree.create_node('['+Fore.GREEN+"++"+Fore.RESET+'] High probability',142,parent=146)
+            tree.create_node('[++] High probability',142,parent=146)
             no_doubles = []
             for i in skype2mail:
                 if i not in no_doubles:
@@ -402,7 +402,7 @@ if possible_mail is not None:
                     # GETTING LEAKED PASSWORDS FROM SCYLLA.SH -> \modules\scylla_sh.py
                     scylla_results = scylla_sh.scylla_search(email=i)
                     if scylla_results is not None:
-                        tree.create_node(Fore.RED+'Leaked From'+Fore.RESET+' : Scylla.sh',1518451,parent=number)
+                        tree.create_node('Leaked From : Scylla.sh',1518451,parent=number)
                         for i in scylla_results:
                             chars = "abcdefghijklmnopqrstuvwxyz1234567890"
                             number = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
@@ -413,7 +413,7 @@ if possible_mail is not None:
                     if a is not None:
                         chars = "abcdefghijklmnopqrstuvwxyz1234567890"
                         number_pass = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-                        tree.create_node(Fore.RED+Back.WHITE+"Leaked Creditentials"+Fore.RESET+Style.RESET_ALL,number_pass,parent=number)
+                        tree.create_node("Leaked Creditentials",number_pass,parent=number)
                         for i in a:
                             password  = i['password']
                             leak_name = i['leak_name']
@@ -425,7 +425,7 @@ if possible_mail is not None:
             write(f'({str(len(no_doubles))}) High Probability Emails : ',no_doubles)
         nb= str((len(possible_mail)))
         if int(nb) != 0:
-            tree.create_node("("+Fore.YELLOW+nb+Fore.RESET+") "+Fore.YELLOW+"Possible Mailbox"+Fore.RESET,8,parent=146)
+            tree.create_node("("+nb+") Possible Mailbox",8,parent=146)
             write(f'({str(len(possible_mail))}) Possible Mailbox : ',possible_mail)
             data_export['Emails']['PermutatedMailbox'] = possible_mail
             for i in possible_mail:
@@ -435,7 +435,7 @@ if facebook_results is not None:
     data_export['Facebook']['Exists'] = True
     write(f'({str(len(facebook_results))}) Facebook : ',facebook_results)
     nb = str(len(facebook_results))
-    tree.create_node(Fore.BLUE+"Facebook"+Fore.RESET,9,parent=1)
+    tree.create_node("Facebook",9,parent=1)
     tree.create_node('Accounts : {}'.format(nb),10,parent=9)
     data_export['Facebook']['AccountList'] = facebook_results
     for i in facebook_results:
@@ -473,6 +473,10 @@ except FileNotFoundError:
         json.dump(data_export,f,indent=4,ensure_ascii=False)
         f.close()
 
+"""
+
+NOT READY 
+
 def webui(url):
     webbrowser.open("https://cnil.me/pub-api/daprofiler/p.html?"+url)
 
@@ -482,9 +486,11 @@ def sendToHub(data_export):
     url = requests.post(url, data = myobj)
     if web_arg is not None:
         webui(url.text)
+"""
 
 if web_arg is not None:
-    sendToHub(data_export)
+    print("WebUI Argument status : Not Ready ! Developement in progress ...") 
+    # sendToHub(data_export)
 
 try:
     if do_upgrade.lower() == "true":
