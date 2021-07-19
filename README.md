@@ -56,8 +56,8 @@ C:\Users\User\> python3 profiler.py -u True
 ## Api
 | Source | Service type | Subscription | Key in code |
 | :---: | :---: | :---: | :---: |
-| Leakcheck.net | Breach Search | Premium 🔑 | ❌ | 
-| apilayer.net | Phone infos | Free ✅ | ✅ |
+| Leakcheck.net | Breach Search | Premium | No | 
+| apilayer.net | Phone infos | Free (In code) | Yes |
 
 Add your premium api keys :
 + Go to [modules\api_modules](https://github.com/TheRealDalunacrobate/DaProfiler/tree/main/modules/api_modules) then open your API module (ex Leakcheck), replace "YOUR_KEY" to your key, save and quit your text editor.
