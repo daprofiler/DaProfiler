@@ -71,3 +71,5 @@ Discord server : [Here](https://discord.gg/4h57QSsEYa)
 ## Contributions
 All suggestions are welcome.
 
+## Code parts used under license and authors
++ [Palenath - Advanced Lookup Function](https://github.com/megadose/toutatis)
