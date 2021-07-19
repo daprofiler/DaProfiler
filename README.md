@@ -51,7 +51,7 @@ C:\Users\User\> python3 profiler.py -u True
 ```
 
 ## Demo
-![alt text](https://i.ibb.co/sPF9NsC/Capture.png)
+![alt text](https://i.ibb.co/52mQWsG/new.png)
 
 ## Api
 | Source | Service type | Subscription | Key in code |
