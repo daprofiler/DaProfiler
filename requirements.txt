@@ -5,3 +5,4 @@ treelib
 leakcheck
 update_check
 httpx
+tqdm
