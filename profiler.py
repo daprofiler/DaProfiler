@@ -69,12 +69,12 @@ def banner():
     print("\r")
 banner()
 
-"""
+
 try:
     logging.speculos_lotus()
 except AttributeError:
     pass
-"""
+
 
 possible_usernames = []
 
