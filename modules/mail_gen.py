@@ -1,5 +1,6 @@
 import threading, requests, bs4
-from bs4 import BeautifulSoup
+from tqdm import tqdm
+from bs4  import BeautifulSoup
 from modules import mail_check
 
 def check(name,pren):
@@ -18,8 +19,10 @@ def check(name,pren):
         "{}{}@outlook.com".format(name,pren),    
     ]
     valid_mails = []
+    bar = tqdm(desc='Checking for emails validity',total=len(results))
     for i in results:
         a = mail_check.verify(mail=i)
+        bar.update(1)
         if a is not None:
             valid_mails.append(i)
     return valid_mails
@@ -54,8 +57,10 @@ def skype2email(name,pren):
             i+"@yandex.ru",
             i+"@outlook.com"
         ]
+        bar = tqdm(desc="Searching for mail domain on {}".format(i),total=len(emails))
         for i in emails:
             a = mail_check.verify(mail=i)
+            bar.update(1)
             if a is not None:
                 valid_emails.append(i)
     return valid_emails
