@@ -33,6 +33,7 @@ from modules  import mail_gen
 from modules  import scylla_sh
 from modules  import mail_check
 
+from modules.visual      import logging
 from modules.api_modules import leakcheck_net
 
 banner = False 
@@ -63,6 +64,7 @@ def banner():
     print("DaProfiler - Inspired from Profiler CToS")
     print("Github : https://github.com/TheRealDalunacrobate\n")
     print("\r")
+    logging.speculos_lotus()
 banner()
 
 possible_usernames = []
