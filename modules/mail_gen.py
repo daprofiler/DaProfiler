@@ -19,7 +19,7 @@ def check(name,pren):
         "{}{}@outlook.com".format(name,pren),    
     ]
     valid_mails = []
-    bar = tqdm(desc='Checking for emails validity',total=len(results))
+    bar = tqdm(desc='Mail permutation',total=len(results))
     for i in results:
         a = mail_check.verify(mail=i)
         bar.update(1)
@@ -47,17 +47,15 @@ def skype2email(name,pren):
     valid_emails = []
 
     for i in profiless:
+        emails = []
         i = i.lower()
-        emails = [
-            i+"@aol.com",
-            i+"@yahoo.com",
-            i+"@gmail.com",
-            i+"@hotmail.com",
-            i+"@icloud.com",
-            i+"@yandex.ru",
-            i+"@outlook.com"
-        ]
-        bar = tqdm(desc="Searching for mail domain on {}".format(i),total=len(emails))
+        with open('modules/mail_domain.txt','r') as file:
+            lines = file.readlines()
+            file.close()
+        for line in lines:
+            if "@" in line and "." in line:
+                emails.append(i+line)
+        bar = tqdm(desc="Searching for target emails on each domains".format(line.split('@')[1]),total=len(emails))
         for i in emails:
             a = mail_check.verify(mail=i)
             bar.update(1)
