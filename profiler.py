@@ -3,7 +3,7 @@ from update_check import update
 
 def update_funct():
     print("\nUpdating Modules ...\n")
-    update("modules/visual/loggin.py","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/visual/logging.py")
+    update("modules/visual/logging.py","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/visual/logging.py")
     update("modules/copainsdavant_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/copainsdavant_search.py")
     update("modules/death_records.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/death_records.py")
     update("modules/dirigeants_bfmtv.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/dirigeants_bfmtv.py")
