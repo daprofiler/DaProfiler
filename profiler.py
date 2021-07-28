@@ -70,7 +70,7 @@ banner()
 
 try:
     logging.speculos_lotus()
-except:
+except AttributeError:
     pass
 
 possible_usernames = []
