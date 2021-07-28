@@ -15,8 +15,9 @@ def update_funct():
     update("profiler.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/profiler.py")
 
 from json import decoder
-import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, http.server, socketserver, webbrowser
+import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, webbrowser
 
+from tqdm     import tqdm
 from treelib  import Node, Tree
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
@@ -33,7 +34,6 @@ from modules  import scylla_sh
 from modules  import mail_check
 
 from modules.api_modules import leakcheck_net
-from modules.visual      import logging
 
 banner = False 
 # Opening json report template
@@ -43,7 +43,6 @@ data_file.close()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
-parser.add_argument('-l','--logging',help="Enable terminal logging (Optional)")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
 parser.add_argument('-O','--output',help="( -O output.txt )")
 parser.add_argument('-W','--webui',help='Open HTML report at the end if is "True" after')
@@ -52,19 +51,19 @@ args = parser.parse_args()
 
 name       = (args.lastname)
 pren       = (args.name)
-log        = (args.logging)
 output     = (args.output)
 web_arg    = (args.webui)
 do_upgrade = (args.update)
 
-if sys.platform == 'win32':
-    os.system('cls')
-else:
-    os.system('clear')
-
-print("DaProfiler - Inspired from Profiler CToS")
-print("Github : https://github.com/TheRealDalunacrobate\n\nSearch in progress ...")
-print("\r")
+def banner():
+    if sys.platform == 'win32':
+        os.system('cls')
+    else:
+        os.system('clear')
+    print("DaProfiler - Inspired from Profiler CToS")
+    print("Github : https://github.com/TheRealDalunacrobate\n")
+    print("\r")
+banner()
 
 possible_usernames = []
 
@@ -85,28 +84,29 @@ social_medias  = []
 
 try:
     if pren and name is not None:
-        logging.terminal_loggin(log,text=("Searching for CopainsDavant accounts ...\n"))
+        bar = tqdm(desc="Searching over social medias and adresses",total=8,leave=True)
         copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
-        logging.terminal_loggin(log,text=("Searching for Facebook accounts ...     \n"))
+        bar.update(1)
+        bar.get_lock()
         facebook_results = facebook_search.facebook_search(name=name,pren=pren)
-        logging.terminal_loggin(log,text=("Searching for Twitter accounts ...      \n"))
+        bar.update(1)
         twitter_results = twitter_search.twitter_search(name=name,pren=pren)
-        logging.terminal_loggin(log,text=("Searching for Death records ...         \n"))
+        bar.update(1)
         avis_deces_results = death_records.death_search(name=name,pren=pren)
-        logging.terminal_loggin(log,text=("Searching for Company ...               \n"))
+        bar.update(1)
         try:
             bfmtv_results = dirigeants_bfmtv.bfmtv_search(name=name,pren=pren)
         except:
             bfmtv_results = None
-        logging.terminal_loggin(log,text=("Searching for instagram accounts ...    \n"))
+        bar.update(1)
         instagram_results = instagram_search.ig_search(name=name,pren=pren)
-        logging.terminal_loggin(log,text=("Searching for Skype accounts ...        \n"))
+        bar.update(1)
         skype_results = skype_search.skype_searchh(name=name,pren=pren)
-        logging.terminal_loggin(log,text=("Searching for Phones and Adresses ...   \n"))
+        bar.update(1)
         pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
-        logging.terminal_loggin(log,text=("Searching for Mail adresses ...         \n"))
+        bar.update(1)
+        bar.close()
         possible_mail = mail_gen.check(name=name,pren=pren)
-        logging.terminal_loggin(log,text=("Searching for Mail from Skype ...       \n"))
         skype2mail = mail_gen.skype2email(name=name,pren=pren)
     elif len(pren) and len(name) == 0:
         facebook_results = None
@@ -440,6 +440,8 @@ if facebook_results is not None:
     data_export['Facebook']['AccountList'] = facebook_results
     for i in facebook_results:
         tree.create_node(i,parent=10)
+
+banner()
 tree.show()
 
 data_export['UI']['Pie']['PersonnalLife']   = len(personnal_life)
