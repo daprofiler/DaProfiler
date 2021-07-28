@@ -64,8 +64,9 @@ def banner():
     print("DaProfiler - Inspired from Profiler CToS")
     print("Github : https://github.com/TheRealDalunacrobate\n")
     print("\r")
-    logging.speculos_lotus()
 banner()
+
+logging.speculos_lotus()
 
 possible_usernames = []
 
