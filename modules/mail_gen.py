@@ -9,13 +9,11 @@ def check(name,pren):
         "{}.{}@gmail.com".format(name,pren),
         "{}.{}@yahoo.com".format(name,pren),
         "{}{}@yahoo.com".format(name,pren),
-        "{}{}@yahoo.fr".format(name,pren),
-        "{}.{}@aol.com".format(name,pren),
-        "{}{}@aol.com".format(name,pren),
+        #"{}{}@yahoo.fr".format(name,pren),
         "{}.{}@hotmail.com".format(name,pren),
         "{}{}@hotmail.com".format(name,pren),
-        "{}{}@hotmail.fr".format(name,pren),
-        "{}{}@outlook.fr".format(name,pren),
+        #"{}{}@hotmail.fr".format(name,pren),
+        #"{}{}@outlook.fr".format(name,pren),
         "{}.{}@outlook.com".format(name,pren),
         "{}{}@outlook.com".format(name,pren),    
     ]
@@ -52,8 +50,8 @@ def skype2email(name,pren):
             i+"@yahoo.com",
             i+"@gmail.com",
             i+"@hotmail.com",
-            i+"@hotmail.fr",
-            i+"@outlook.fr",
+            i+"@icloud.com",
+            i+"@yandex.ru",
             i+"@outlook.com"
         ]
         for i in emails:
