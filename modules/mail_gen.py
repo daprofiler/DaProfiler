@@ -57,8 +57,8 @@ def skype2email(name,pren):
                 emails.append(i+line)
         bar = tqdm(desc="Searching for target emails on each domains".format(line.split('@')[1]),total=len(emails))
         for i in emails:
-            a = mail_check.verify(mail=i)
+            a = mail_check.verify(mail=i.strip())
             bar.update(1)
             if a is not None:
-                valid_emails.append(i)
+                valid_emails.append(i.strip())
     return valid_emails
