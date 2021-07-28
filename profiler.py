@@ -13,6 +13,8 @@ def update_funct():
     update("modules/skype_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/skype_search.py")
     update("modules/twitter_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/twitter_search.py")
     update("profiler.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/profiler.py")
+    update("modules/mail_domain.txt","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/mail_domain.txt")
+    update("requirements.txt","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/requirements.txt")
 
 from json import decoder
 import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, webbrowser
