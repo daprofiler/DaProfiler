@@ -74,7 +74,7 @@ def pinterest2email(name,pren):
 
     if len(a) != 0:
         for i in a:
-            if "https://www.pinterest.com/" not in a:
+            if "https://www.pinterest.com/" not in i:
                 pass
             else:
                 emails.append(i.replace('https://www.pinterest.com/','').replace('/','')+"@gmail.com")
