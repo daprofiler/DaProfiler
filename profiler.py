@@ -114,6 +114,7 @@ try:
         bar.close()
         possible_mail = mail_gen.check(name=name,pren=pren)
         skype2mail = mail_gen.skype2email(name=name,pren=pren)
+        pin2mail = mail_gen.pinterest2email(name=name,pren=pren)
     elif len(pren) and len(name) == 0:
         facebook_results = None
         twitter_results = None
@@ -394,7 +395,7 @@ if instagram_results is not None:
                     tree.create_node('Email from bio -> '+Fore.CYAN+i+Fore.RESET,number_skkk,parent=number_ski)
         data_export['Instagram']['AccountList'] = acc_json_list
 if possible_mail is not None:
-    if len(possible_mail) != 0 or len(skype2mail) != 0:
+    if len(possible_mail) != 0 or len(skype2mail) != 0 or pin2mail is not None:
         tree.create_node('Emails extracted',146,parent=1)
         if skype2mail is not None:
             tree.create_node('[++] High probability',142,parent=146)
@@ -430,6 +431,10 @@ if possible_mail is not None:
             data_export['Emails']['HighProbEmails'] = no_doubles
             write(f'({str(len(no_doubles))}) High Probability Emails : ',no_doubles)
         nb= str((len(possible_mail)))
+        if pin2mail is not None:
+            tree.create_node('[+++] Very high probability',45451451545545155154,parent=146)
+            for i in pin2mail:
+                tree.create_node('-> '+Fore.RED+i+Fore.RESET+" (Scraped from pinterest profile)",parent=45451451545545155154)
         if int(nb) != 0:
             tree.create_node("("+nb+") Possible Mailbox",8,parent=146)
             write(f'({str(len(possible_mail))}) Possible Mailbox : ',possible_mail)
