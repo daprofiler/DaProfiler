@@ -31,8 +31,6 @@ usage: profiler.py [-h] [-n NAME] [-l LOGGING] [-ln LASTNAME] [-O OUTPUT]
 
   -h, --help            show this help message and exit
   -n NAME, --name NAME  Victim name
-  -l LOGGING, --logging LOGGING
-                        Enable terminal logging (Optional)
   -ln LASTNAME, --lastname LASTNAME
                         Last name of victim
   -O OUTPUT, --output OUTPUT
