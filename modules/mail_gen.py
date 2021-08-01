@@ -1,7 +1,8 @@
 import threading, requests, bs4
-from tqdm import tqdm
-from bs4  import BeautifulSoup
-from modules import mail_check
+from tqdm         import tqdm
+from bs4          import BeautifulSoup
+from modules      import mail_check
+from googlesearch import search
 
 def check(name,pren):
     name = name.lower()
@@ -62,3 +63,27 @@ def skype2email(name,pren):
             if a is not None:
                 valid_emails.append(i.strip())
     return valid_emails
+
+def pinterest2email(name,pren):
+    therm = 'allintitle: {} {}"Profil de {} {}" site:pinterest.com -pin'.format(pren,name,pren,name)
+
+    a = search(therm, lang="fr")
+
+    emails = []
+    valid_emails = []
+
+    if len(a) != 0:
+        for i in a:
+            if "https://www.pinterest.com/" not in a:
+                pass
+            else:
+                emails.append(i.replace('https://www.pinterest.com/','').replace('/','')+"@gmail.com")
+    
+    for i in emails:
+        check = mail_check.verify(mail=i)
+        if check is not None:
+            valid_emails.append(i)
+    if len(valid_emails) > 0:
+        return valid_emails
+    else:
+        return None
