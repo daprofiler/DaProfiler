@@ -3,6 +3,7 @@ from update_check import update
 
 def update_funct():
     print("\nUpdating Modules ...\n")
+    update('modules/linkedin_search.py','https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/linkedin_search.py')
     update("modules/visual/logging.py","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/visual/logging.py")
     update("modules/copainsdavant_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/copainsdavant_search.py")
     update("modules/death_records.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/death_records.py")
@@ -35,6 +36,7 @@ from modules  import facebook_search
 from modules  import mail_gen
 from modules  import scylla_sh
 from modules  import mail_check
+from modules  import linkedin_search
 
 from modules.visual      import logging
 from modules.api_modules import leakcheck_net
@@ -90,7 +92,7 @@ social_medias  = []
 
 try:
     if pren and name is not None:
-        bar = tqdm(desc="Searching over social medias and adresses",total=8,leave=True)
+        bar = tqdm(desc="Searching over social medias and adresses",total=9,leave=True)
         copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
         bar.update(1)
         bar.get_lock()
@@ -111,11 +113,14 @@ try:
         bar.update(1)
         pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
         bar.update(1)
+        linkedin_results = linkedin_search.linkedin_search(name=name,pren=pren)
+        bar.update(1)
         bar.close()
         possible_mail = mail_gen.check(name=name,pren=pren)
         skype2mail = mail_gen.skype2email(name=name,pren=pren)
         pin2mail = mail_gen.pinterest2email(name=name,pren=pren)
     elif len(pren) and len(name) == 0:
+        linkedin_results = None
         facebook_results = None
         twitter_results = None
         avis_deces_results = None
@@ -129,6 +134,7 @@ try:
         pren = ""
         name = ""
     else:
+        linkedin_results = None
         facebook_results = None
         twitter_results = None
         avis_deces_results = None
@@ -142,6 +148,7 @@ try:
         pren = ""
         name = ""
 except TypeError:
+    linkedin_results = None
     facebook_results = None
     twitter_results = None
     avis_deces_results = None
@@ -187,6 +194,9 @@ if avis_deces_results is not None:
         tree.create_node('{}\t| {}'.format(i['Name'],i['Loc'][1:]),parent=41518181871541514778)
     data_export['DeathRecords']['Exists'] = True
     data_export['DeathRecords']['Records'] = avis_deces_results[:5]
+if linkedin_results is not None:
+    tree.create_node('LinkedIN Profile',15418911611515145145,parent=1)
+    tree.create_node(linkedin_results,parent=15418911611515145145)
 if pagesblanche is not None:
     personnal_life.append('.')
     full_name = pagesblanche['Name']
