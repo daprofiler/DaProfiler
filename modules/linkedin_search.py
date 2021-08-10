@@ -1,0 +1,8 @@
+from googlesearch import search
+
+def linkedin_search(name,pren):
+    a = search('"{} {}" -intitle:"profiles" -inurl:"dir/ " site:fr.linkedin.com/in/ OR site:fr.linkedin.com/pub/'.format(pren,name), lang="fr")
+    if len(a) > 0:
+        return a[0]
+    else:
+        return None
