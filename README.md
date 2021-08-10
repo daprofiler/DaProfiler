@@ -5,6 +5,8 @@
 
 For educational purposes only.
 
+DaProfiler allows you to get emails, social medias, adresses, works and more on your target using web scraping and google dorking techniques, based in France Only. The particularity of this program is its ability to find your target's e-mail adresses.
+
 ![alt text](https://i.ibb.co/1vbRgZm/banner.png)
 # DaProfiler
 
