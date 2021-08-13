@@ -35,7 +35,8 @@
 
     "DeathRecords":{
         "Exists":false,
-        "Records":false
+        "Records":false,
+        "AverageAgeUntilDeath":false
     },
 
     "Emails":{
