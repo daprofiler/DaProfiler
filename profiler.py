@@ -519,7 +519,7 @@ def sendToHub(data_export):
 if len(average_age) != 0:
     average_age_until_death = str(mean(average_age))
     data_export['DeathRecords']['AverageAgeUntilDeath'] = average_age_until_death
-    print("Age moyen avant mort : "+average_age_until_death)
+    print("Esperance de vie moyenne : "+average_age_until_death)
 else:
     data_export['DeathRecords']['AverageAgeUntilDeath'] = False
 
