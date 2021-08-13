@@ -14,6 +14,7 @@ def update_funct():
     update("modules/pagesblanches_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/pagesblanches_search.py")
     update("modules/skype_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/skype_search.py")
     update("modules/twitter_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/twitter_search.py")
+    update("modules/report.json","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/report.json")
     update("profiler.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/profiler.py")
     update("modules/mail_domain.txt","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/mail_domain.txt")
     update("requirements.txt","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/requirements.txt")
@@ -21,9 +22,10 @@ def update_funct():
 from json import decoder
 import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, webbrowser
 
-from tqdm     import tqdm
-from treelib  import Node, Tree
-from colorama import Fore, Back, Style, init
+from tqdm       import tqdm
+from treelib    import Node, Tree
+from colorama   import Fore, Back, Style, init
+from statistics import mean
 init(autoreset=True)
 from modules  import skype_search
 from modules  import pagesblanches_search
@@ -167,6 +169,8 @@ if output is not None:
         f.write('Results on target : {} {}\n\n'.format(name,pren))
         f.close()
 
+average_age = []
+
 def write(typee,objectt):
     if output is not None:
         with open(str(output),'a+',encoding='utf-8') as f:
@@ -191,9 +195,10 @@ data_export['LastName'] = name
 if avis_deces_results is not None:
     tree.create_node("Death Records",41518181871541514778,parent=1)
     for i in avis_deces_results[:5]:
-        tree.create_node('{}\t| {}'.format(i['Name'],i['Loc'][1:]),parent=41518181871541514778)
+        tree.create_node('{} | {}\t| {}'.format(i['Age'],i['Name'],i['Loc'][1:]),parent=41518181871541514778)
     data_export['DeathRecords']['Exists'] = True
     data_export['DeathRecords']['Records'] = avis_deces_results[:5]
+    average_age.append(int(i['Age']))
 if linkedin_results is not None:
     tree.create_node('LinkedIN Profile',15418911611515145145,parent=1)
     tree.create_node(linkedin_results,parent=15418911611515145145)
@@ -510,6 +515,13 @@ def sendToHub(data_export):
     if web_arg is not None:
         webui(url.text)
 """
+
+if len(average_age) != 0:
+    average_age_until_death = str(mean(average_age))
+    data_export['DeathRecords']['AverageAgeUntilDeath'] = average_age_until_death
+    print("Age moyen avant mort : "+average_age_until_death)
+else:
+    data_export['DeathRecords']['AverageAgeUntilDeath'] = False
 
 if web_arg is not None:
     print("WebUI Argument status : Not Ready ! Developement in progress ...") 
