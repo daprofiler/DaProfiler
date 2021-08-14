@@ -75,7 +75,7 @@ def copains_davant(name,pren):
                 job = " ".join(job.split()).split(' ')[0]
             if "Enfant" in card:
                 nb_kids = card.split("Enfants :")[1].split(" ")[0]
-            text = {'Other_locations':location_list,'url_full':'copainsdavant.linternaute.com{}'.format(profil_url),'familial_situation':str(situation_familiale).replace('Enfants','').replace('Aucune','').strip(),'full_name':str(name_full),'born':str(naissance),'localisation':str(localisation),
+            text = {'Other_locations':location_list,'url_full':'{}'.format(profil_url),'familial_situation':str(situation_familiale).replace('Enfants','').replace('Aucune','').strip(),'full_name':str(name_full),'born':str(naissance),'localisation':str(localisation),
                 "nb_enfants":str(nb_kids).strip(),"Job":str(job).strip(),'pdp':str(photo),    
             }
             return text
