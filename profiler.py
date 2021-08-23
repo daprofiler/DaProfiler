@@ -198,7 +198,10 @@ if avis_deces_results is not None:
         tree.create_node('{} | {}\t| {}'.format(i['Age'],i['Name'],i['Loc'][1:]),parent=41518181871541514778)
     data_export['DeathRecords']['Exists'] = True
     data_export['DeathRecords']['Records'] = avis_deces_results[:5]
-    average_age.append(int(i['Age']))
+    try:
+        average_age.append(int(i['Age']))
+    except ValueError:
+        pass
 if linkedin_results is not None:
     tree.create_node('LinkedIN Profile',15418911611515145145,parent=1)
     tree.create_node(linkedin_results,parent=15418911611515145145)
