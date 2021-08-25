@@ -17,13 +17,16 @@ def death_search(name,pren):
         profile_list = []
 
         for i in range(len(names)):
-            name = names[i].text.strip()
-            loc  = villes[i].text.strip()
-            age  = ages[i].text.strip()
-            link = links[i]
-            link = (str(link).split('" title="')[0])
-            link = str(link).replace('<a class="list__link" href="','').replace('https://www.','')
-            profile_list.append({'Name':name,'Link':link,'Age':str(age)[0:2].replace('ans','').strip(),'Loc':loc.replace('- ','')})
+            try:
+                name = names[i].text.strip()
+                loc  = villes[i].text.strip()
+                age  = ages[i].text.strip()
+                link = links[i]
+                link = (str(link).split('" title="')[0])
+                link = str(link).replace('<a class="list__link" href="','').replace('https://www.','')
+                profile_list.append({'Name':name,'Link':link,'Age':str(age)[0:2].replace('ans','').strip(),'Loc':loc.replace('- ','')})
+            except:
+                pass
 
         if len(profile_list) == 0:
             return None
