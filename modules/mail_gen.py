@@ -65,25 +65,28 @@ def skype2email(name,pren):
     return valid_emails
 
 def pinterest2email(name,pren):
-    therm = 'allintitle: {} {}"Profil de {} {}" site:pinterest.com -pin'.format(pren,name,pren,name)
+    try:
+        therm = 'allintitle: {} {}"Profil de {} {}" site:pinterest.com -pin'.format(pren,name,pren,name)
 
-    a = search(therm, lang="fr")
+        a = search(therm, lang="fr")
 
-    emails = []
-    valid_emails = []
+        emails = []
+        valid_emails = []
 
-    if len(a) != 0:
-        for i in a:
-            if "https://www.pinterest.com/" not in i:
-                pass
-            else:
-                emails.append(i.replace('https://www.pinterest.com/','').replace('/','')+"@gmail.com")
-    
-    for i in emails:
-        check = mail_check.verify(mail=i)
-        if check is not None:
-            valid_emails.append(i)
-    if len(valid_emails) > 0:
-        return valid_emails
-    else:
+        if len(a) != 0:
+            for i in a:
+                if "https://www.pinterest.com/" not in i:
+                    pass
+                else:
+                    emails.append(i.replace('https://www.pinterest.com/','').replace('/','')+"@gmail.com")
+        
+        for i in emails:
+            check = mail_check.verify(mail=i)
+            if check is not None:
+                valid_emails.append(i)
+        if len(valid_emails) > 0:
+            return valid_emails
+        else:
+            return None
+    except:
         return None
