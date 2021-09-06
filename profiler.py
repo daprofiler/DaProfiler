@@ -1,6 +1,7 @@
 from colorama.initialise import init
 from update_check import update
 
+## ------------------------- Update the code  -------------------------
 def update_funct():
     print("\nUpdating Modules ...\n")
     update('modules/linkedin_search.py','https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/linkedin_search.py')
@@ -49,6 +50,7 @@ data_file = open('modules/report.json','r')
 data_export = json.load(data_file)
 data_file.close()
 
+# Get the arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
@@ -57,12 +59,14 @@ parser.add_argument('-W','--webui',help='Open HTML report at the end if is "True
 parser.add_argument('-u','--update',help="Update DaProfiler")
 args = parser.parse_args()
 
+# Set the vars
 name       = (args.lastname)
 pren       = (args.name)
 output     = (args.output)
 web_arg    = (args.webui)
 do_upgrade = (args.update)
 
+# Affichage de la banniere 
 def banner():
     if sys.platform == 'win32':
         os.system('cls')
@@ -73,25 +77,25 @@ def banner():
     print("\r")
 banner()
 
+# Def var
 logging.speculos_lotus()
-
 possible_usernames = []
-
 folder_name = "{}_{}".format(pren,name)
 
+personnal_life = []
+social_medias  = []
+
+# Crraeate the folder for the reports
 try:
     os.mkdir('Reports')
 except FileExistsError:
     pass
-
 try:
     os.mkdir('Reports/{}'.format(folder_name))
 except FileExistsError:
     pass
 
-personnal_life = []
-social_medias  = []
-
+# Main
 try:
     if pren and name is not None:
         bar = tqdm(desc="Searching over social medias and adresses",total=9,leave=True)
@@ -164,6 +168,7 @@ except TypeError:
     pren = ""
     name = ""  
 
+# Print the results file location
 if output is not None:
     with open(output,'a+') as f:
         f.write('Results on target : {} {}\n\n'.format(name,pren))
@@ -192,6 +197,9 @@ tree = Tree()
 tree.create_node(f"{pren} {name}", 1)
 data_export['Name'] = pren
 data_export['LastName'] = name
+
+
+# Daprofiler check les deces
 if avis_deces_results is not None:
     tree.create_node("Death Records",41518181871541514778,parent=1)
     for i in avis_deces_results[:5]:
@@ -202,9 +210,13 @@ if avis_deces_results is not None:
         average_age.append(int(i['Age']))
     except ValueError:
         pass
+
+# Daprofiler check les linkedin
 if linkedin_results is not None:
     tree.create_node('LinkedIN Profile',15418911611515145145,parent=1)
     tree.create_node(linkedin_results,parent=15418911611515145145)
+
+# Daprofiler check les pages blanches
 if pagesblanche is not None:
     personnal_life.append('.')
     full_name = pagesblanche['Name']
@@ -228,6 +240,8 @@ if pagesblanche is not None:
         data_export['AdressPhone']['PhoneLocation'] = pagesblanche['Loc_phone']
     if pagesblanche['Type_tel'] is not None:
         tree.create_node('Type  : {}'.format(pagesblanche['Type_tel']),66,parent=44)
+
+# Daprofiler check les copains davant
 if copainsdavant_results is not None:
     personnal_life.append('.')
     data_export['CopainsDavant']['Exists'] = True
@@ -278,6 +292,8 @@ if copainsdavant_results is not None:
                 pass
     except TypeError:
         pass
+
+# Daprofiler check BFMtv
 if bfmtv_results is not None:
     personnal_life.append('.')
     data_export['Work']['Exists'] = True
@@ -297,6 +313,8 @@ if bfmtv_results is not None:
     tree.create_node('Born Date : {}'.format(bfmtv_results['naissance']),333,parent=4)
     tree.create_node('Function  : {}'.format(bfmtv_results['fonction']),444,parent=4)
     tree.create_node('Warrant   : {}'.format(bfmtv_results['mandats']),555,parent=4)
+
+# Daprofiler check twitter
 if twitter_results is not None:
     social_medias.append('.')
     data_export['Twitter']['Exists'] = True
@@ -305,6 +323,8 @@ if twitter_results is not None:
     tree.create_node("Twitter",5,parent=1)
     for i in twitter_results:
         tree.create_node(i,parent=5)
+
+# Daprofiler check skype
 if skype_results is not None:
     social_medias.append('.')
     data_export['Skype']['Exists'] = True
@@ -316,6 +336,8 @@ if skype_results is not None:
         chars = "abcdefghijklmnopqrstuvwxyz1234567890"
         number_sk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
         tree.create_node(i,number_sk,parent=12)
+
+# Daprofiler check instagram
 if instagram_results is not None:
     if len(instagram_results) ==  0:
         pass
@@ -412,6 +434,20 @@ if instagram_results is not None:
                     number_skk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
                     tree.create_node('Email from bio -> '+Fore.CYAN+i+Fore.RESET,number_skkk,parent=number_ski)
         data_export['Instagram']['AccountList'] = acc_json_list
+
+# Daprofiler check facebook
+if facebook_results is not None:
+    social_medias.append('.')
+    data_export['Facebook']['Exists'] = True
+    write(f'({str(len(facebook_results))}) Facebook : ',facebook_results)
+    nb = str(len(facebook_results))
+    tree.create_node("Facebook",9,parent=1)
+    tree.create_node('Accounts : {}'.format(nb),10,parent=9)
+    data_export['Facebook']['AccountList'] = facebook_results
+    for i in facebook_results:
+        tree.create_node(i,parent=10)
+
+# Daprofiler generate Possible Email
 if possible_mail is not None:
     if len(possible_mail) != 0 or len(skype2mail) != 0 or pin2mail is not None:
         tree.create_node('Emails extracted',146,parent=1)
@@ -459,20 +495,12 @@ if possible_mail is not None:
             data_export['Emails']['PermutatedMailbox'] = possible_mail
             for i in possible_mail:
                 tree.create_node(i,parent=8)
-if facebook_results is not None:
-    social_medias.append('.')
-    data_export['Facebook']['Exists'] = True
-    write(f'({str(len(facebook_results))}) Facebook : ',facebook_results)
-    nb = str(len(facebook_results))
-    tree.create_node("Facebook",9,parent=1)
-    tree.create_node('Accounts : {}'.format(nb),10,parent=9)
-    data_export['Facebook']['AccountList'] = facebook_results
-    for i in facebook_results:
-        tree.create_node(i,parent=10)
+
 
 banner()
 tree.show()
 
+# Gen some analysis data
 data_export['UI']['Pie']['PersonnalLife']   = len(personnal_life)
 data_export['UI']['Pie']['SocialMedias']    = len(social_medias)
 try:
@@ -494,6 +522,7 @@ except TypeError:
     
 data_file.close()
 
+# Write the data_export file
 try:
     with open(f'Reports/{folder_name}/{name}_{pren}.json','w',encoding='utf8') as f:
         json.dump(data_export,f,indent=4,ensure_ascii=False)
@@ -519,6 +548,8 @@ def sendToHub(data_export):
         webui(url.text)
 """
 
+
+# data analyse
 if len(average_age) != 0:
     average_age_until_death = str(mean(average_age))
     data_export['DeathRecords']['AverageAgeUntilDeath'] = average_age_until_death
