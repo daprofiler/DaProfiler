@@ -1,0 +1,4 @@
+/modules/__pycache__/*
+/modules/visual/__pycache__/*
+/modules/api_modules/__pycache__/*
+/Reports/*
