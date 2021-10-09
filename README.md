@@ -65,6 +65,16 @@ Add your premium api keys :
 # Hub
 This branch of daprofiler is supporting the OSINT-HUB integration
 
+| Args | Description | Stable |
+| :--- | :---------- | :----- |
+| '-hubR','--hub-register' | Permit to register user in the hub | true |
+| '-hubL','--hub-login' | Permet to login to the hub | true |
+| '-hubU','--hub-username' | Set your username | true |
+| '-hubP','--hub-password' | Set your password | true |
+| '-hubS','--hub-search' | Also search on the hub | true |
+| '-pp','--push-private' | Set your search in private | false |
+| '-pg','--push-group' | Set your search in private | false |
+
 
 # Contact
 Mail : _daluna_pro@protonmail.ch_. <br>

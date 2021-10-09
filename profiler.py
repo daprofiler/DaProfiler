@@ -80,7 +80,7 @@ parser.add_argument('-hubR','--hub-register',help='Register to the hub if is "Tr
 parser.add_argument('-hubL','--hub-login',help='Register to the hub if is "True"')
 parser.add_argument('-hubU','--hub-username',help='your hub username')
 parser.add_argument('-hubP','--hub-password',help='your hub password')
-parser.add_argument('-hubT','--hub-token',help='your hub token')
+parser.add_argument('-hubS','--hub-search',help='search in the hub')
 
 parser.add_argument('-pp','--push-private',help='push the data in private if is "True"')
 parser.add_argument('-pg','--push-group',help='push the data in a group via group name')
@@ -104,10 +104,16 @@ thisIsATmpTokenListener = randomString(25);
 
 @sio.on(thisIsATmpTokenListener)
 def on_message(data):
-    if(data['success']):
-        print("[+] "+data['message'])
+    if data["type"] == "search": 
+        file = open('hub_reports/'+name+"_"+pren+".json", 'w')
+        file.write(str(data["message"]).replace("'",'"'))
+        file.close()
+        print("[*] Data added to : hub_reports/"+name+"_"+pren+".json")
     else:
-        print("[-] "+data['message'])
+        if(data['success']):
+            print("[+] "+data['message'])
+        else:
+            print("[-] "+data['message'])
 
 # Check the hub args
 if args.hub_register == 'True':
@@ -139,6 +145,25 @@ if args.hub_login == None or args.hub_login == 'True':
                 }))
         except Exception as e: 
             print("Error while login to your hub account")
+
+
+if args.hub_login == None or args.hub_login == 'True':
+    if args.hub_username == None or args.hub_password == None:
+        print("\n[!] You need to provide your hub username, password to search in the hub")
+    else: 
+        if args.hub_search == 'True':
+            try : 
+                f = open("./user/key.txt","r")
+                usertoken = f.readlines()
+                if usertoken != "":
+                    sio.emit('search', json.dumps({
+                        "tmp": thisIsATmpTokenListener,
+                        "token": usertoken[0],
+                        "info": name+" | "+pren
+                    }))
+            except Exception as e: 
+                print(e)
+                print("Error while searching in the hub")
 
 
 # Def var
@@ -596,21 +621,6 @@ except FileNotFoundError:
         json.dump(data_export,f,indent=4,ensure_ascii=False)
         f.close()
 
-"""
-
-NOT READY 
-
-def webui(url):
-    webbrowser.open("https://cnil.me/pub-api/daprofiler/p.html?"+url)
-
-def sendToHub(data_export):
-    url = 'https://cnil.me/pub-api/daprofiler/new'
-    myobj = json.dumps(data_export)
-    url = requests.post(url, data = myobj)
-    if web_arg is not None:
-        webui(url.text)
-"""
-
 # Push to the hub defalt is public
 if args.hub_login == None or args.hub_login == 'True':
     status = 'public'
@@ -633,8 +643,6 @@ if args.hub_login == None or args.hub_login == 'True':
             }))
     except Exception as e: 
             print("Error while login to your hub account")
-
-    
 
 
 # data analyse
