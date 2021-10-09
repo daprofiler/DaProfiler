@@ -44,6 +44,11 @@ from modules  import linkedin_search
 from modules.visual      import logging
 from modules.api_modules import leakcheck_net
 
+## Hub import
+import hub.hub_register as hub_register
+
+
+
 banner = False 
 # Opening json report template
 data_file = open('modules/report.json','r')
@@ -57,6 +62,13 @@ parser.add_argument('-ln','--lastname',help="Last name of victim")
 parser.add_argument('-O','--output',help="( -O output.txt )")
 parser.add_argument('-W','--webui',help='Open HTML report at the end if is "True" after')
 parser.add_argument('-u','--update',help="Update DaProfiler")
+
+## Argument of the hub
+parser.add_argument('-hubR','--hub-register',help='Register to the hub')
+parser.add_argument('-hubU','--hub-username',help='your hub username')
+parser.add_argument('-hubP','--hub-password',help='your hub password')
+parser.add_argument('-hubT','--hub-token',help='your hub token')
+
 args = parser.parse_args()
 
 # Set the vars
@@ -65,6 +77,19 @@ pren       = (args.name)
 output     = (args.output)
 web_arg    = (args.webui)
 do_upgrade = (args.update)
+
+# Check the hub args
+if args.hub_register == 'True':
+    if args.hub_username == None or args.hub_password == None:
+        print("\n[!] You need to provide your hub username and password to register to the hub")
+        print("[!] \t--hub-username YOUR_USERNAME --hub-password YOUR_PASSWORD")
+        print("\n[!] Exiting ...\n")
+        exit()
+    else:
+        hub_register.start(args.hub_username,args.hub_password)
+        print("\n[!] Exiting ...\n")
+        exit()
+
 
 # Affichage de la banniere 
 def banner():

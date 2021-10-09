@@ -8,3 +8,7 @@ update_check
 httpx
 tqdm
 statistics
+python-socketio
+string
+random
+json
