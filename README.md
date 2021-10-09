@@ -62,7 +62,11 @@ C:\Users\User\> python3 profiler.py -u True
 Add your premium api keys :
 + Go to [modules\api_modules](https://github.com/TheRealDalunacrobate/DaProfiler/tree/main/modules/api_modules) then open your API module (ex Leakcheck), replace "YOUR_KEY" to your key, save and quit your text editor.
 
-## Contact
+# Hub
+This branch of daprofiler is supporting the OSINT-HUB integration
+
+
+# Contact
 Mail : _daluna_pro@protonmail.ch_. <br>
 Discord : `Dalunacrobate#6166` <br>
 Discord server : [Here](https://discord.gg/4h57QSsEYa)
