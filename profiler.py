@@ -76,11 +76,14 @@ parser.add_argument('-W','--webui',help='Open HTML report at the end if is "True
 parser.add_argument('-u','--update',help="Update DaProfiler")
 
 ## Argument of the hub
-parser.add_argument('-hubR','--hub-register',help='Register to the hub')
-parser.add_argument('-hubL','--hub-login',help='Register to the hub')
+parser.add_argument('-hubR','--hub-register',help='Register to the hub if is "True"')
+parser.add_argument('-hubL','--hub-login',help='Register to the hub if is "True"')
 parser.add_argument('-hubU','--hub-username',help='your hub username')
 parser.add_argument('-hubP','--hub-password',help='your hub password')
 parser.add_argument('-hubT','--hub-token',help='your hub token')
+
+parser.add_argument('-pp','--push-private',help='push the data in private if is "True"')
+parser.add_argument('-pg','--push-group',help='push the data in a group via group name')
 
 args = parser.parse_args()
 
@@ -607,6 +610,31 @@ def sendToHub(data_export):
     if web_arg is not None:
         webui(url.text)
 """
+
+# Push to the hub defalt is public
+if args.hub_login == None or args.hub_login == 'True':
+    status = 'public'
+    if args.push_private == 'True':
+        status = 'private'
+    if args.push_group == 'True':
+        status = 'group'
+
+    try : 
+        f = open("./user/key.txt","r")
+        usertoken = f.readlines()
+        if usertoken[0] != "":
+            sio.emit('push', json.dumps({
+                "token": usertoken[0],
+                "tmp": thisIsATmpTokenListener,
+                "type": status,
+                "dataFrom": "daprofiler",
+                "info": name+" | "+pren,
+                "data": data_export
+            }))
+    except Exception as e: 
+            print("Error while login to your hub account")
+
+    
 
 
 # data analyse
