@@ -21,7 +21,7 @@ def update_funct():
     update("requirements.txt","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/requirements.txt")
 
 from json import decoder
-import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, webbrowser
+import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, webbrowser, socketio, string
 
 from tqdm       import tqdm
 from treelib    import Node, Tree
@@ -55,6 +55,18 @@ data_file = open('modules/report.json','r')
 data_export = json.load(data_file)
 data_file.close()
 
+
+# Affichage de la banniere 
+def banner():
+    if sys.platform == 'win32':
+        os.system('cls')
+    else:
+        os.system('clear')
+    print("DaProfiler - Inspired from Profiler CToS")
+    print("Github : https://github.com/TheRealDalunacrobate\n")
+    print("\n")
+banner()
+
 # Get the arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
@@ -65,6 +77,7 @@ parser.add_argument('-u','--update',help="Update DaProfiler")
 
 ## Argument of the hub
 parser.add_argument('-hubR','--hub-register',help='Register to the hub')
+parser.add_argument('-hubL','--hub-login',help='Register to the hub')
 parser.add_argument('-hubU','--hub-username',help='your hub username')
 parser.add_argument('-hubP','--hub-password',help='your hub password')
 parser.add_argument('-hubT','--hub-token',help='your hub token')
@@ -78,6 +91,21 @@ output     = (args.output)
 web_arg    = (args.webui)
 do_upgrade = (args.update)
 
+# Hub route
+sio = socketio.Client()
+
+def randomString(length):
+    return ''.join(random.choice(string.ascii_letters) for i in range(length))
+
+thisIsATmpTokenListener = randomString(25);
+
+@sio.on(thisIsATmpTokenListener)
+def on_message(data):
+    if(data['success']):
+        print("[+] "+data['message'])
+    else:
+        print("[-] "+data['message'])
+
 # Check the hub args
 if args.hub_register == 'True':
     if args.hub_username == None or args.hub_password == None:
@@ -90,17 +118,25 @@ if args.hub_register == 'True':
         print("\n[!] Exiting ...\n")
         exit()
 
+if args.hub_login == None or args.hub_login == 'True':
+    if args.hub_username == None or args.hub_password == None:
+        print("\n[!] You need to provide your hub username, password to login to the hub")
+    else: 
+        try : 
+            f = open("./user/key.txt","r")
+            usertoken = f.readlines()
+            print("[+] Hub token found in ./user/key.txt")
+            if usertoken != "":
+                sio.connect('http://localhost:8080')
+                sio.emit('login', json.dumps({
+                    "tmp": thisIsATmpTokenListener,
+                    "token": usertoken[0],
+                    "username": args.hub_username,
+                    "password": args.hub_password
+                }))
+        except Exception as e: 
+            print("Error while login to your hub account")
 
-# Affichage de la banniere 
-def banner():
-    if sys.platform == 'win32':
-        os.system('cls')
-    else:
-        os.system('clear')
-    print("DaProfiler - Inspired from Profiler CToS")
-    print("Github : https://github.com/TheRealDalunacrobate\n")
-    print("\r")
-banner()
 
 # Def var
 logging.speculos_lotus()
@@ -521,8 +557,7 @@ if possible_mail is not None:
             for i in possible_mail:
                 tree.create_node(i,parent=8)
 
-
-banner()
+#banner()
 tree.show()
 
 # Gen some analysis data
@@ -591,3 +626,5 @@ try:
         update_funct()
 except:
     pass
+
+print('[*] - Search End')

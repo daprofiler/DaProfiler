@@ -12,7 +12,6 @@ def speculos_lotus():
         HOW :
         . Go to /modules
         . Add your domains ({} Detected) 
-
         """.format(str(len(lines))))
     except:
         pass
