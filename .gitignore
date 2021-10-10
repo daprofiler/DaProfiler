@@ -4,5 +4,7 @@ modules/visual/__pycache__/*
 modules/api_modules/__pycache__/*
 Reports/*
 hub_reports/*
+user/*
 
+!user/exemple.txt
 !hub_reports/.notEmpty

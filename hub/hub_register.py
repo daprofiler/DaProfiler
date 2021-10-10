@@ -40,7 +40,7 @@ def addUserKey(userKey):
     print('[+] User key added!')
 
 def start(username, password):
-    sio.connect('http://localhost:8080')
+    sio.connect('http://osint-hub.cnil.me:5340')
     sio.emit('register', json.dumps({
         "tmp": thisIsATmpTokenListener,
         "username": username,

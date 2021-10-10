@@ -65,6 +65,8 @@ Add your premium api keys :
 # Hub
 This branch of daprofiler is supporting the OSINT-HUB integration
 
+> create "./user/key.txt" with your osint-hub key inside see exemple.txt
+
 | Args | Description | Stable |
 | :--- | :---------- | :----- |
 | '-hubR','--hub-register' | Permit to register user in the hub | true |

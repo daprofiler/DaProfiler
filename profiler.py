@@ -136,7 +136,7 @@ if args.hub_login == None or args.hub_login == 'True':
             usertoken = f.readlines()
             print("[+] Hub token found in ./user/key.txt")
             if usertoken != "":
-                sio.connect('http://localhost:8080')
+                sio.connect('http://osint-hub.cnil.me:5340')
                 sio.emit('login', json.dumps({
                     "tmp": thisIsATmpTokenListener,
                     "token": usertoken[0],
