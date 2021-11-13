@@ -127,43 +127,32 @@ if args.hub_register == 'True':
         print("\n[!] Exiting ...\n")
         exit()
 
-if args.hub_login == None or args.hub_login == 'True':
-    if args.hub_username == None or args.hub_password == None:
-        print("\n[!] You need to provide your hub username, password to login to the hub")
-    else: 
-        try : 
-            f = open("./user/key.txt","r")
-            usertoken = f.readlines()
-            print("[+] Hub token found in ./user/key.txt")
-            if usertoken != "":
-                sio.connect('http://osint-hub.cnil.me:5340')
-                sio.emit('login', json.dumps({
-                    "tmp": thisIsATmpTokenListener,
-                    "token": usertoken[0],
-                    "username": args.hub_username,
-                    "password": args.hub_password
-                }))
-        except Exception as e: 
-            print("Error while login to your hub account")
+try : 
+    f = open("./user/key.txt","r")
+    usertoken = f.readlines()
+    print("[+] Hub token found in ./user/key.txt")
+    if usertoken != "":
+        sio.connect('http://osint-hub.cnil.me:5340')
+        sio.emit('login', json.dumps({
+            "tmp": thisIsATmpTokenListener,
+            "token": usertoken[0]
+        }))
+except Exception as e: 
+    print("Error while login to your hub account. Write your key in: ./user/key.txt")
 
 
-if args.hub_login == None or args.hub_login == 'True':
-    if args.hub_username == None or args.hub_password == None:
-        print("\n[!] You need to provide your hub username, password to search in the hub")
-    else: 
-        if args.hub_search == 'True':
-            try : 
-                f = open("./user/key.txt","r")
-                usertoken = f.readlines()
-                if usertoken != "":
-                    sio.emit('search', json.dumps({
-                        "tmp": thisIsATmpTokenListener,
-                        "token": usertoken[0],
-                        "info": name+" | "+pren
-                    }))
-            except Exception as e: 
-                print(e)
-                print("Error while searching in the hub")
+if args.hub_search == 'True':
+    try : 
+        f = open("./user/key.txt","r")
+        usertoken = f.readlines()
+        if usertoken != "":
+            sio.emit('search', json.dumps({
+                "tmp": thisIsATmpTokenListener,
+                "token": usertoken[0],
+                 "info": name+" | "+pren
+            }))
+    except Exception as e: 
+        print("Error while searching in the hub. Invalid key file")
 
 
 # Def var
@@ -655,7 +644,6 @@ else:
 
 if web_arg is not None:
     print("WebUI Argument status : Not Ready ! Developement in progress ...") 
-    # sendToHub(data_export)
 
 try:
     if do_upgrade.lower() == "true":
@@ -664,3 +652,7 @@ except:
     pass
 
 print('[*] - Search End')
+print('[*] - Report Generated')
+print('[*] - Report Name : '+name+'_'+pren+'.json')
+print('[*] - Report Path : Reports/'+folder_name+'/'+name+'_'+pren+'.json')
+exit()

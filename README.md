@@ -74,13 +74,31 @@ This branch of daprofiler is supporting the OSINT-HUB integration
 | -pp,--push-private | Set your search in private | false |
 | -pg,--push-group | Set your search in private | false |
 
+## Exemple
+
+### Register to the hub
+`python profiler.py --hub-register True --hub-username rabbit --hub-password Aqwzsx1234`
+
+### Search with hub research
+`python profiler.py -n amelie -ln delacroix --hub-search True`
+
+> note that a public search use your participation coin :p
+
+## Hub info
+Made by: [Alice Snow](https://github.com/Sn0wAlice)<br>
+Possible to use a nodejs client to explore: [Here](https://github.com/Sn0wAlice/osint-hub-client)<br>
+Website [www.cnil.me](https://www.cnil.me) is the official acces hub website
+
+Admin can delete all your data just if he want ! no need reason !
+
+> educational propose only
+
 
 # Contact
 Mail : _daluna_pro@protonmail.ch_. <br>
 Discord : `Dalunacrobate#6166` <br>
 Discord server : [Here](https://discord.gg/4h57QSsEYa)
 
-Website SOON :)
 
 ## Contributions
 All suggestions are welcome.
