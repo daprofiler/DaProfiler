@@ -71,8 +71,8 @@ This branch of daprofiler is supporting the OSINT-HUB integration
 | -hubU,--hub-username | Set your username | true |
 | -hubP,--hub-password | Set your password | true |
 | -hubS,--hub-search | Also search on the hub | true |
-| -pp,--push-private | Set your search in private | false |
-| -pg,--push-group | Set your search in private | false |
+| -pp,--push-private | Set your search in private | true |
+| -pg,--push-group | Set your search in private | true |
 
 ## Exemple
 

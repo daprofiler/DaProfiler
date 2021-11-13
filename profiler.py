@@ -62,9 +62,22 @@ def banner():
         os.system('cls')
     else:
         os.system('clear')
-    print("DaProfiler - Inspired from Profiler CToS")
-    print("Github : https://github.com/TheRealDalunacrobate\n")
-    print("\n")
+
+    art = """
+
+    ▓█████▄  ▄▄▄       ██▓███   ██▀███   ▒█████    █████▒██▓ ██▓    ▓█████  ██▀███  
+    ▒██▀ ██▌▒████▄    ▓██░  ██▒▓██ ▒ ██▒▒██▒  ██▒▓██   ▒▓██▒▓██▒    ▓█   ▀ ▓██ ▒ ██▒
+    ░██   █▌▒██  ▀█▄  ▓██░ ██▓▒▓██ ░▄█ ▒▒██░  ██▒▒████ ░▒██▒▒██░    ▒███   ▓██ ░▄█ ▒
+    ░▓█▄   ▌░██▄▄▄▄██ ▒██▄█▓▒ ▒▒██▀▀█▄  ▒██   ██░░▓█▒  ░░██░▒██░    ▒▓█  ▄ ▒██▀▀█▄  
+    ░▒████▓  ▓█   ▓██▒▒██▒ ░  ░░██▓ ▒██▒░ ████▓▒░░▒█░   ░██░░██████▒░▒████▒░██▓ ▒██▒
+     ▒▒▓  ▒  ▒▒   ▓▒█░▒▓▒░ ░  ░░ ▒▓ ░▒▓░░ ▒░▒░▒░  ▒ ░   ░▓  ░ ▒░▓  ░░░ ▒░ ░░ ▒▓ ░▒▓░
+    ░ ▒  ▒   ▒   ▒▒ ░░▒ ░       ░▒ ░ ▒░  ░ ▒ ▒░  ░      ▒ ░░ ░ ▒  ░ ░ ░  ░  ░▒ ░ ▒░
+    ░ ░  ░   ░   ▒   ░░         ░░   ░ ░ ░ ░ ▒   ░ ░    ▒ ░  ░ ░      ░     ░░   ░ 
+    ░          ░  ░            ░         ░ ░          ░      ░  ░   ░  ░   ░     
+    """
+    print(art)
+    print("DaProfiler - Inspired from Profiler CToS #watchdogs")
+    print("Github : https://github.com/TheRealDalunacrobate\n\n\n")
 banner()
 
 # Get the arguments
