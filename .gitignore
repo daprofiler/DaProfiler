@@ -1,4 +1,10 @@
-/modules/__pycache__/*
-/modules/visual/__pycache__/*
-/modules/api_modules/__pycache__/*
-/Reports/*
+hub/__pycache__/*
+modules/__pycache__/*
+modules/visual/__pycache__/*
+modules/api_modules/__pycache__/*
+Reports/*
+hub_reports/*
+user/*
+
+!user/exemple.txt
+!hub_reports/.notEmpty

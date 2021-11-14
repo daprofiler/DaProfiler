@@ -21,7 +21,7 @@ def update_funct():
     update("requirements.txt","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/requirements.txt")
 
 from json import decoder
-import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, webbrowser
+import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, webbrowser, socketio, string
 
 from tqdm       import tqdm
 from treelib    import Node, Tree
@@ -44,11 +44,30 @@ from modules  import linkedin_search
 from modules.visual      import logging
 from modules.api_modules import leakcheck_net
 
+## Hub import
+import hub.hub_register as hub_register
+
+
+
 banner = False 
 # Opening json report template
 data_file = open('modules/report.json','r')
 data_export = json.load(data_file)
 data_file.close()
+
+
+# Affichage de la banniere 
+def banner():
+    if sys.platform == 'win32':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+    art = """"""
+    print(art)
+    print("DaProfiler - Inspired from Profiler CToS #watchdogs")
+    print("Github : https://github.com/TheRealDalunacrobate\n\n\n")
+banner()
 
 # Get the arguments
 parser = argparse.ArgumentParser()
@@ -57,6 +76,17 @@ parser.add_argument('-ln','--lastname',help="Last name of victim")
 parser.add_argument('-O','--output',help="( -O output.txt )")
 parser.add_argument('-W','--webui',help='Open HTML report at the end if is "True" after')
 parser.add_argument('-u','--update',help="Update DaProfiler")
+
+## Argument of the hub
+parser.add_argument('-hubR','--hub-register',help='Register to the hub if is "True"')
+parser.add_argument('-hubL','--hub-login',help='Register to the hub if is "True"')
+parser.add_argument('-hubU','--hub-username',help='your hub username')
+parser.add_argument('-hubP','--hub-password',help='your hub password')
+parser.add_argument('-hubS','--hub-search',help='search in the hub')
+
+parser.add_argument('-pp','--push-private',help='push the data in private if is "True"')
+parser.add_argument('-pg','--push-group',help='push the data in a group via group name')
+
 args = parser.parse_args()
 
 # Set the vars
@@ -66,16 +96,66 @@ output     = (args.output)
 web_arg    = (args.webui)
 do_upgrade = (args.update)
 
-# Affichage de la banniere 
-def banner():
-    if sys.platform == 'win32':
-        os.system('cls')
+# Hub route
+sio = socketio.Client()
+
+def randomString(length):
+    return ''.join(random.choice(string.ascii_letters) for i in range(length))
+
+thisIsATmpTokenListener = randomString(25);
+
+@sio.on(thisIsATmpTokenListener)
+def on_message(data):
+    if data["type"] == "search": 
+        file = open('hub_reports/'+name+"_"+pren+".json", 'w')
+        file.write(str(data["message"]).replace("'",'"'))
+        file.close()
+        print("[*] Data added to : hub_reports/"+name+"_"+pren+".json")
     else:
-        os.system('clear')
-    print("DaProfiler - Inspired from Profiler CToS")
-    print("Github : https://github.com/TheRealDalunacrobate\n")
-    print("\r")
-banner()
+        if(data['success']):
+            print("[+] "+data['message'])
+        else:
+            print("[-] "+data['message'])
+
+# Check the hub args
+if args.hub_register == 'True':
+    if args.hub_username == None or args.hub_password == None:
+        print("\n[!] You need to provide your hub username and password to register to the hub")
+        print("[!] \t--hub-username YOUR_USERNAME --hub-password YOUR_PASSWORD")
+        print("\n[!] Exiting ...\n")
+        exit()
+    else:
+        hub_register.start(args.hub_username,args.hub_password)
+        print("\n[!] Exiting ...\n")
+        exit()
+
+try : 
+    f = open("./user/key.txt","r")
+    usertoken = f.readlines()
+    print("[+] Hub token found in ./user/key.txt")
+    if usertoken != "":
+        sio.connect('http://osint-hub.cnil.me:5340')
+        sio.emit('login', json.dumps({
+            "tmp": thisIsATmpTokenListener,
+            "token": usertoken[0]
+        }))
+except Exception as e: 
+    print("Error while login to your hub account. Write your key in: ./user/key.txt")
+
+
+if args.hub_search == 'True':
+    try : 
+        f = open("./user/key.txt","r")
+        usertoken = f.readlines()
+        if usertoken != "":
+            sio.emit('search', json.dumps({
+                "tmp": thisIsATmpTokenListener,
+                "token": usertoken[0],
+                 "info": name+" | "+pren
+            }))
+    except Exception as e: 
+        print("Error while searching in the hub. Invalid key file")
+
 
 # Def var
 logging.speculos_lotus()
@@ -496,8 +576,7 @@ if possible_mail is not None:
             for i in possible_mail:
                 tree.create_node(i,parent=8)
 
-
-banner()
+#banner()
 tree.show()
 
 # Gen some analysis data
@@ -533,20 +612,28 @@ except FileNotFoundError:
         json.dump(data_export,f,indent=4,ensure_ascii=False)
         f.close()
 
-"""
+# Push to the hub defalt is public
+if args.hub_login == None or args.hub_login == 'True':
+    status = 'public'
+    if args.push_private == 'True':
+        status = 'private'
+    if args.push_group == 'True':
+        status = 'group'
 
-NOT READY 
-
-def webui(url):
-    webbrowser.open("https://cnil.me/pub-api/daprofiler/p.html?"+url)
-
-def sendToHub(data_export):
-    url = 'https://cnil.me/pub-api/daprofiler/new'
-    myobj = json.dumps(data_export)
-    url = requests.post(url, data = myobj)
-    if web_arg is not None:
-        webui(url.text)
-"""
+    try : 
+        f = open("./user/key.txt","r")
+        usertoken = f.readlines()
+        if usertoken[0] != "":
+            sio.emit('push', json.dumps({
+                "token": usertoken[0],
+                "tmp": thisIsATmpTokenListener,
+                "type": status,
+                "dataFrom": "daprofiler",
+                "info": name+" | "+pren,
+                "data": data_export
+            }))
+    except Exception as e: 
+            print("Error while login to your hub account")
 
 
 # data analyse
@@ -559,10 +646,15 @@ else:
 
 if web_arg is not None:
     print("WebUI Argument status : Not Ready ! Developement in progress ...") 
-    # sendToHub(data_export)
 
 try:
     if do_upgrade.lower() == "true":
         update_funct()
 except:
     pass
+
+print('[*] - Search End')
+print('[*] - Report Generated')
+print('[*] - Report Name : '+name+'_'+pren+'.json')
+print('[*] - Report Path : Reports/'+folder_name+'/'+name+'_'+pren+'.json')
+exit()
