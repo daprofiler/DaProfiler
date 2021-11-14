@@ -14,6 +14,8 @@ DaProfiler allows you to get emails, social medias, adresses, works and more on 
 DaProfiler allows you to create a profile on your **target** based in France only.
 The particularity of this program is its ability to find the e-mail addresses of a target via searches on [Skype](https://www.skype.com/), [Pinterest](https://www.pinterest.com) and tests of combining e-mail addresses followed by a check to know if the email address exists or not (Beware of false negatives, the results displayed do not necessarily relate to the target you are looking for if another person has the same name - first name). DaProfiler is also able to check the words of a an instagram bio to find interesting information such as : **Email addresses**, **Paypal.me profiles**,**Sexual Orientation**,**City**,**School**,**Age**,**Ethnicity**,**Religions**,**Hobbies** and more ...
 
+Official website [www.cnil.me/daprofiler/](https://www.cnil.me/daprofiler/)
+
 ## Install
 
 Python 3.8 required
@@ -44,7 +46,7 @@ usage: profiler.py [-h] [-n NAME] [-l LOGGING] [-ln LASTNAME] [-O OUTPUT]
                         Update DaProfiler (Optional)
 ```
 ### WARNING !
-If you are not login to the hug and you search people, your search will be save to the hub. Please register to the hub and use `-pp` to push private your search.
+If you are not login to the hub and you search people, your search will be save to the hub. Please register to the hub and use `-pp` to push private your search.
 
 
 ## Demo
