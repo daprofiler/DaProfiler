@@ -179,27 +179,65 @@ except FileExistsError:
 try:
     if pren and name is not None:
         bar = tqdm(desc="Searching over social medias and adresses",total=9,leave=True)
-        copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
+        try:
+            copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
+        except:
+            copainsdavant_results = None
         bar.update(1)
         bar.get_lock()
-        facebook_results = facebook_search.facebook_search(name=name,pren=pren)
+
+        try:
+            facebook_results = facebook_search.facebook_search(name=name,pren=pren)
+        except:
+            facebook_results = None
+
         bar.update(1)
-        twitter_results = twitter_search.twitter_search(name=name,pren=pren)
+
+        try:
+            twitter_results = twitter_search.twitter_search(name=name,pren=pren)
+        except:
+            twitter_results = None
+
         bar.update(1)
-        avis_deces_results = death_records.death_search(name=name,pren=pren)
+
+        try:
+            avis_deces_results = death_records.death_search(name=name,pren=pren)
+        except:
+            avis_deces_results = None
+        
         bar.update(1)
         try:
             bfmtv_results = dirigeants_bfmtv.bfmtv_search(name=name,pren=pren)
         except:
             bfmtv_results = None
         bar.update(1)
-        instagram_results = instagram_search.ig_search(name=name,pren=pren)
+
+
+        try:
+            instagram_results = instagram_search.ig_search(name=name,pren=pren)
+        except:
+            instagram_results = None
         bar.update(1)
-        skype_results = skype_search.skype_searchh(name=name,pren=pren)
+
+        try:
+            skype_results = skype_search.skype_searchh(name=name,pren=pren)
+        except:
+            skype_results = None
+
         bar.update(1)
-        pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
+
+        try:
+            pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
+        except:
+            pagesblanche = None
+
         bar.update(1)
-        linkedin_results = linkedin_search.linkedin_search(name=name,pren=pren)
+
+        try:
+            linkedin_results = linkedin_search.linkedin_search(name=name,pren=pren)
+        except:
+            linkedin_results = None
+
         bar.update(1)
         bar.close()
         possible_mail = mail_gen.check(name=name,pren=pren)
