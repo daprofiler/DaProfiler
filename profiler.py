@@ -1,7 +1,7 @@
 from colorama.initialise import init
 from update_check import update
 
-## ------------------------- Update the code  -------------------------
+## ------------------------- Update the modules  -------------------------
 def update_funct():
     print("\nUpdating Modules ...\n")
     update('modules/linkedin_search.py','https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/linkedin_search.py')
@@ -615,6 +615,11 @@ if possible_mail is not None:
                 tree.create_node(i,parent=8)
 
 #banner()
+if sys.platform == "win32":
+    os.system('cls')
+else:
+    os.system('clear')
+    
 tree.show()
 
 # Gen some analysis data
@@ -695,4 +700,5 @@ print('[*] - Search End')
 print('[*] - Report Generated')
 print('[*] - Report Name : '+name+'_'+pren+'.json')
 print('[*] - Report Path : Reports/'+folder_name+'/'+name+'_'+pren+'.json')
+
 exit()
