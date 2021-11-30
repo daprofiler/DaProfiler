@@ -38,10 +38,6 @@ usage: profiler.py [-h] [-n NAME] [-l LOGGING] [-ln LASTNAME] [-O OUTPUT]
   -n NAME, --name NAME  Victim name
   -ln LASTNAME, --lastname LASTNAME
                         Last name of victim
-  -O OUTPUT, --output OUTPUT
-                        ( -O output.txt ) (Optional)
-  -W WEBUI, --webui WEBUI
-                        Open HTML report at the end if is "True" after excecution (Optional)
   -u UPDATE, --update UPDATE
                         Update DaProfiler (Optional)
 ```
