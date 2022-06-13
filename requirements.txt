@@ -1,0 +1,11 @@
+requests
+bs4
+colorama
+googlesearch-python
+treelib
+leakcheck
+update_check
+httpx
+tqdm
+statistics
+python-socketio
