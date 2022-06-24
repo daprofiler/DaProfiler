@@ -70,6 +70,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
 parser.add_argument('-u','--update',help="Update DaProfiler")
+parser.add_argument('-json','--json',help="Print result in json")
 
 
 args = parser.parse_args()
@@ -78,6 +79,7 @@ args = parser.parse_args()
 name       = (args.lastname)
 pren       = (args.name)
 do_upgrade = (args.update)
+json_print = (args.json)
 
 def randomString(length):
     return ''.join(random.choice(string.ascii_letters) for i in range(length))
@@ -349,12 +351,15 @@ if skype_results is not None:
     social_medias.append('.')
     data_export['Skype']['Exists'] = True
     data_export['Skype']['AccountList'] = skype_results
-    tree.create_node("Skype",6,parent=1)
-    tree.create_node("Accounts : {}".format(str(len(skype_results))),12,parent=6)
-    for i in skype_results:
-        chars = "abcdefghijklmnopqrstuvwxyz1234567890"
-        number_sk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-        tree.create_node(i,number_sk,parent=12)
+    if len(skype_results) == 0:
+        pass
+    else:
+        tree.create_node("Skype",6,parent=1)
+        tree.create_node("Accounts : {}".format(str(len(skype_results))),12,parent=6)
+        for i in skype_results:
+            chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+            number_sk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+            tree.create_node(i,number_sk,parent=12)
 
 # Daprofiler check instagram
 if instagram_results is not None:
@@ -516,8 +521,6 @@ if sys.platform == "win32":
     os.system('cls')
 else:
     os.system('clear')
-    
-tree.show()
 
 # For data analyse
 data_export['UI']['Pie']['PersonnalLife']   = len(personnal_life)
@@ -538,6 +541,11 @@ try:
     data_export['UI']['Bar']['SkypeFounds']     = len(skype_results)
 except TypeError:
     data_export['UI']['Bar']['SkypeFounds']     = 0
+
+if json_print == "true":
+    print(str(data_export))
+else:    
+    tree.show()
     
 data_file.close()
 try:
