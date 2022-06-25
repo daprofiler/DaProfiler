@@ -1,3 +1,4 @@
+from nis import cat
 from colorama.initialise import init
 from update_check import update
 
@@ -377,85 +378,91 @@ if instagram_results is not None:
             number_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
             bio_infos = instagram_search.getInstagramEmailFromBio(username)
             tree.create_node(i,number_ski,parent=13)
-            data = instagram_search.get_extra_data(username)
-            if data is not None:
-                if data['obfuscated_email'] is not None:
-                    ob_mail = data['obfuscated_email']
-                    tree.create_node("Obfuscated Email -> "+ob_mail,parent=number_ski)
-                else:
-                    ob_mail = False
-                if data['obfuscated_phone'] is not None:
-                    ob_phone = data['obfuscated_phone']
-                    tree.create_node("Obfuscated Phone -> "+ob_phone,parent=number_ski)
+
+            # Here try catch due to instagram api error
+            # Issue repported for: Mac m1 with VPN active
+            try:
+                data = instagram_search.get_extra_data(username)
+                if data is not None:
+                    if data['obfuscated_email'] is not None:
+                        ob_mail = data['obfuscated_email']
+                        tree.create_node("Obfuscated Email -> "+ob_mail,parent=number_ski)
+                    else:
+                        ob_mail = False
+                    if data['obfuscated_phone'] is not None:
+                        ob_phone = data['obfuscated_phone']
+                        tree.create_node("Obfuscated Phone -> "+ob_phone,parent=number_ski)
+                    else:
+                        ob_phone = False
                 else:
                     ob_phone = False
-            else:
-                ob_phone = False
-                ob_mail  = False
-            acc_json_list.append({"Username":username,'obfuscated_phone':ob_phone,'obfuscated_email':ob_mail})
+                    ob_mail  = False
+                acc_json_list.append({"Username":username,'obfuscated_phone':ob_phone,'obfuscated_email':ob_mail})
 
-            bio_emails = bio_infos['emails']
-            paypal_bio = bio_infos['paypal']
-            city_loc   = bio_infos['city_list']
-            is_lgbt    = bio_infos['lgbt_points']
-            schoolname = bio_infos['school']
-            bestfriend = bio_infos['best_friend']
-            love_date  = bio_infos['love_date']
-            age_bio    = bio_infos['age']
-            ethnicity  = bio_infos['origins']
-            facebook_l = bio_infos['fb_list']
-            twitter_l  = bio_infos['twitter_list']
-            hobbies    = bio_infos['Hobbies']
-            love_situa = bio_infos['love_situation']
-            religions  = bio_infos['religions']
-            astrologys = bio_infos['astrology']
-            if love_situa is not None:
-                nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-                tree.create_node('Love Situation',nnumber_ski,parent=number_ski)
-                for i in love_situa:
-                    tree.create_node(i,parent=nnumber_ski)
-            if astrologys is not None:
-                nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-                tree.create_node('Astrologic sign',nnumber_ski,parent=number_ski)
-                for i in astrologys:
-                    tree.create_node(i,parent=nnumber_ski)
-            if religions is not None:
-                nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-                tree.create_node('Religion(s)',nnumber_ski,parent=number_ski)
-                for i in religions:
-                    tree.create_node(i,parent=nnumber_ski)
-            if hobbies is not None:
-                nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-                tree.create_node('Hobbies',nnumber_ski,parent=number_ski)
-                for i in hobbies:
-                    tree.create_node(i,parent=nnumber_ski)
-            if bestfriend is not None:
-                nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-                tree.create_node('Good relationship with',nnumber_ski,parent=number_ski)
-                for i in bestfriend:
-                    tree.create_node('{}'.format(i),parent=nnumber_ski)
-            if is_lgbt is not None:
-                lgbt_flag = (Fore.RED+"█"+Fore.YELLOW+"█"+Fore.GREEN+"█"+Fore.BLUE+"█"+Fore.MAGENTA+"█"+Fore.RESET)
-                tree.create_node('{} LGBT Member'.format(lgbt_flag),parent=number_ski)
-            if ethnicity is not None:
-                tree.create_node('Ethnicity : {}'.format(str(ethnicity).replace('[','').replace(']','').replace("'","")),parent=number_ski)
-            if facebook_l is not None:
-                tree.create_node('Facebook : {}'.format(str(facebook_l).replace('[','').replace(']','').replace("'","")),parent=number_ski)
-            if twitter_l is not None:
-                tree.create('Twitter : {}'.format(str(twitter_l).replace('[','').replace(']','').replace("'","")),parent=number_ski)
-            if schoolname is not None:
-                tree.create_node('School Name : {}'.format(schoolname),parent=number_ski)
-            if city_loc is not None:
-                tree.create_node('City : {}'.format(city_loc[0]),parent=number_ski)
-            if paypal_bio is not None:
-                for i in paypal_bio:
-                    tree.create_node('Paypal in bio -> '+i,parent=number_ski)
-            if bio_emails is not None:
-                for i in bio_emails:
-                    chars = "abcdefghijklmnopqrstuvwxyz1234567890"
-                    number_skkk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-                    number_skk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-                    tree.create_node('Email from bio -> '+Fore.CYAN+i+Fore.RESET,number_skkk,parent=number_ski)
+                bio_emails = bio_infos['emails']
+                paypal_bio = bio_infos['paypal']
+                city_loc   = bio_infos['city_list']
+                is_lgbt    = bio_infos['lgbt_points']
+                schoolname = bio_infos['school']
+                bestfriend = bio_infos['best_friend']
+                love_date  = bio_infos['love_date']
+                age_bio    = bio_infos['age']
+                ethnicity  = bio_infos['origins']
+                facebook_l = bio_infos['fb_list']
+                twitter_l  = bio_infos['twitter_list']
+                hobbies    = bio_infos['Hobbies']
+                love_situa = bio_infos['love_situation']
+                religions  = bio_infos['religions']
+                astrologys = bio_infos['astrology']
+                if love_situa is not None:
+                    nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                    tree.create_node('Love Situation',nnumber_ski,parent=number_ski)
+                    for i in love_situa:
+                        tree.create_node(i,parent=nnumber_ski)
+                if astrologys is not None:
+                    nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                    tree.create_node('Astrologic sign',nnumber_ski,parent=number_ski)
+                    for i in astrologys:
+                        tree.create_node(i,parent=nnumber_ski)
+                if religions is not None:
+                    nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                    tree.create_node('Religion(s)',nnumber_ski,parent=number_ski)
+                    for i in religions:
+                        tree.create_node(i,parent=nnumber_ski)
+                if hobbies is not None:
+                    nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                    tree.create_node('Hobbies',nnumber_ski,parent=number_ski)
+                    for i in hobbies:
+                        tree.create_node(i,parent=nnumber_ski)
+                if bestfriend is not None:
+                    nnumber_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                    tree.create_node('Good relationship with',nnumber_ski,parent=number_ski)
+                    for i in bestfriend:
+                        tree.create_node('{}'.format(i),parent=nnumber_ski)
+                if is_lgbt is not None:
+                    lgbt_flag = (Fore.RED+"█"+Fore.YELLOW+"█"+Fore.GREEN+"█"+Fore.BLUE+"█"+Fore.MAGENTA+"█"+Fore.RESET)
+                    tree.create_node('{} LGBT Member'.format(lgbt_flag),parent=number_ski)
+                if ethnicity is not None:
+                    tree.create_node('Ethnicity : {}'.format(str(ethnicity).replace('[','').replace(']','').replace("'","")),parent=number_ski)
+                if facebook_l is not None:
+                    tree.create_node('Facebook : {}'.format(str(facebook_l).replace('[','').replace(']','').replace("'","")),parent=number_ski)
+                if twitter_l is not None:
+                    tree.create('Twitter : {}'.format(str(twitter_l).replace('[','').replace(']','').replace("'","")),parent=number_ski)
+                if schoolname is not None:
+                    tree.create_node('School Name : {}'.format(schoolname),parent=number_ski)
+                if city_loc is not None:
+                    tree.create_node('City : {}'.format(city_loc[0]),parent=number_ski)
+                if paypal_bio is not None:
+                    for i in paypal_bio:
+                        tree.create_node('Paypal in bio -> '+i,parent=number_ski)
+                if bio_emails is not None:
+                    for i in bio_emails:
+                        chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                        number_skkk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                        number_skk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                        tree.create_node('Email from bio -> '+Fore.CYAN+i+Fore.RESET,number_skkk,parent=number_ski)
+            except:
+                pass
         data_export['Instagram']['AccountList'] = acc_json_list
 
 # Daprofiler check facebook
