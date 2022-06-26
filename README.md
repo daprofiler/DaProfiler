@@ -38,8 +38,10 @@ options:
   -n NAME, --name NAME  Victim name
   -ln LASTNAME, --lastname LASTNAME
                         Last name of victim
-  -u UPDATE, --update UPDATE
+  -u true, --update true
                         Update DaProfiler
+  -json true, --json true
+                        Print result in json
 ```
 
 ## Demo
