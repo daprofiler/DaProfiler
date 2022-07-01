@@ -32,7 +32,13 @@
         "Warrant":false,
         "Link":false
     },
-
+    "Diploma":{
+        "Exists":false,
+        "Academie":false,
+        "Mention":false,
+        "City":false,
+        "Diplome":false
+    },
     "DeathRecords":{
         "Exists":false,
         "Records":false,
