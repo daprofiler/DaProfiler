@@ -109,7 +109,7 @@ except FileExistsError:
 # Main
 try:
     if pren and name is not None:
-        bar = tqdm(desc="Searching over social medias and adresses",total=10,leave=True)
+        bar = tqdm(desc="Searching over the world",total=11,leave=True)
         try:
             copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
         except:
@@ -157,9 +157,15 @@ try:
 
         bar.update(1)
         try:
-            diplomess = last_diplomes.last_diplomes(name=name,pren=pren)
+            diplomess = last_diplomes.last_diplomes_brevet(name=name,pren=pren)
         except:
             diplomess = None
+
+        bar.update(1)
+        try:
+            diplome_bac = last_diplomes.last_diplomes_bac(name=name,pren=pren)
+        except:
+            diplome_bac = None
 
         bar.update(1)
         try:
@@ -272,6 +278,22 @@ if pagesblanche is not None:
     if pagesblanche['Type_tel'] is not None:
         tree.create_node('Type  : {}'.format(pagesblanche['Type_tel']),66,parent=44)
 
+if diplome_bac is not None:
+    if diplome_bac['Exists'] == True:
+        tree.create_node('DIPLOME BAC',58,parent=1)
+        tree.create_node('Bac     : '+diplome_bac['Diplome'],848151541514,parent=58)
+        tree.create_node('Academy : '+diplome_bac['academie'],848151241514,parent=58)
+        tree.create_node('Mention : '+diplome_bac['mention'],848151341514,parent=58)
+        tree.create_node('City    : '+diplome_bac['ville'],848151641514,parent=58)
+        tree.create_node('Source  : '+diplome_bac['Link'],45994851726,parent=58)
+
+        data_export['Diploma_Bac']['Exists']   = True
+        data_export['Diploma_Bac']['Academie'] = diplome_bac['academie']
+        data_export['Diploma_Bac']['Mention']  = diplome_bac['mention']
+        data_export['Diploma_Bac']['City']     = diplome_bac['ville']
+        data_export['Diploma_Bac']['Diplome']  = diplome_bac['Diplome']
+        data_export['Diploma_Bac']['Link']     = diplome_bac['Link']  
+
 # Daprofiler check les copains davant
 if copainsdavant_results is not None:
     personnal_life.append('.')
@@ -370,17 +392,18 @@ if skype_results is not None:
 # Diploma printing
 
 if diplomess is not None:
-    tree.create_node('Diploma',452,parent=1)
+    tree.create_node('BREVET DES COLLEGES',452,parent=1)
     tree.create_node('Diploma  : {}'.format(diplomess['Diplome']),45855887,parent=452)
     tree.create_node('Details  : {}'.format(diplomess['mention']),45855847,parent=452)
     tree.create_node('Academy  : {}'.format(diplomess['academie']),45855687,parent=452)
     tree.create_node('Location : {}'.format(diplomess['ville']),45855881,parent=452)
+    tree.create_node('Source   : {}'.format(diplomess['Link']),45896472,parent=452)
 
-    data_export['Diploma']['Exists']   = True
-    data_export['Diploma']['Academie'] = diplomess['academie']
-    data_export['Diploma']['Mention']  = diplomess['mention']
-    data_export['Diploma']['City']     = diplomess['ville']
-
+    data_export['Diploma_Brevet']['Exists']   = True
+    data_export['Diploma_Brevet']['Academie'] = diplomess['academie']
+    data_export['Diploma_Brevet']['Mention']  = diplomess['mention']
+    data_export['Diploma_Brevet']['City']     = diplomess['ville']
+    data_export['Diplome_brevet']['Link']     = diplomess['Link']
 # Daprofiler check instagram
 
 if instagram_results is not None:
