@@ -32,8 +32,17 @@
         "Warrant":false,
         "Link":false
     },
-    "Diploma":{
+    "Diploma_Bac":{
         "Exists":false,
+        "Link":false,
+        "Academie":false,
+        "Mention":false,
+        "City":false,
+        "Diplome":false
+    },
+    "Diploma_Brevet":{
+        "Exists":false,
+        "Link":false,
         "Academie":false,
         "Mention":false,
         "City":false,
