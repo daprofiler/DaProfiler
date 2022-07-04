@@ -1,3 +1,5 @@
+https://discord.gg/x33VN6Pkea
+
 > Depreciated for the moment, please wait Daprofiler v2, thx
 
 > Any update ? create a branch named `added-YOUUPDATE` and open a pull request. Your code will be checked
