@@ -158,7 +158,7 @@ try:
         bar.update(1)
         try:
             diplomess = last_diplomes.last_diplomes_brevet(name=name,pren=pren)
-        except:
+        except :
             diplomess = None
 
         bar.update(1)
@@ -393,17 +393,19 @@ if skype_results is not None:
 
 if diplomess is not None:
     tree.create_node('BREVET DES COLLEGES',452,parent=1)
+    tree.create_node('Name     : {}'.format(diplomess['Name']),1816864648,parent=452)
     tree.create_node('Diploma  : {}'.format(diplomess['Diplome']),45855887,parent=452)
     tree.create_node('Details  : {}'.format(diplomess['mention']),45855847,parent=452)
     tree.create_node('Academy  : {}'.format(diplomess['academie']),45855687,parent=452)
     tree.create_node('Location : {}'.format(diplomess['ville']),45855881,parent=452)
     tree.create_node('Source   : {}'.format(diplomess['Link']),45896472,parent=452)
 
+    data_export['Diploma_Brevet']['Name']     = diplomess['Name']
     data_export['Diploma_Brevet']['Exists']   = True
     data_export['Diploma_Brevet']['Academie'] = diplomess['academie']
     data_export['Diploma_Brevet']['Mention']  = diplomess['mention']
     data_export['Diploma_Brevet']['City']     = diplomess['ville']
-    data_export['Diplome_brevet']['Link']     = diplomess['Link']
+    data_export['Diploma_Brevet']['Link']     = diplomess['Link']
 # Daprofiler check instagram
 
 if instagram_results is not None:
