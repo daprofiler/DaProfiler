@@ -42,6 +42,7 @@
     },
     "Diploma_Brevet":{
         "Exists":false,
+        "Name":false,
         "Link":false,
         "Academie":false,
         "Mention":false,
