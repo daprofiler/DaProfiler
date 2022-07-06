@@ -72,7 +72,7 @@ parser.add_argument("-n", "--name", help="Victim name")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
 parser.add_argument('-u','--update',help="Update DaProfiler")
 parser.add_argument('-json','--json',help="Print result in json")
-
+parser.add_argument('-zp','--zp',help="Zip code (Optional)")
 
 args = parser.parse_args()
 
@@ -81,6 +81,7 @@ name       = (args.lastname)
 pren       = (args.name)
 do_upgrade = (args.update)
 json_print = (args.json)
+zip_code   = (args.zp)
 
 def randomString(length):
     return ''.join(random.choice(string.ascii_letters) for i in range(length))
@@ -169,7 +170,10 @@ try:
 
         bar.update(1)
         try:
-            pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
+            if zip_code is not None:
+                pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren,zipc=str(zip_code))
+            else:
+                pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren,zipc=None)
         except:
             pagesblanche = None
 
@@ -236,6 +240,10 @@ tree.create_node(f"{pren} {name}", 1)
 data_export['Name'] = pren
 data_export['LastName'] = name
 
+try:
+    diplome_bac = last_diplomes.last_diplomes_bac(name=name,pren=pren)
+except:
+    diplome_bac = None
 
 # Daprofiler check les deces
 if avis_deces_results is not None:
@@ -260,13 +268,17 @@ if pagesblanche is not None:
     full_name = pagesblanche['Name']
     adress = pagesblanche['Adress']
     phone = pagesblanche['Phone']
-
+    sure_status = pagesblanche['Not_Sure']
+    
+    data_export['AdressPhone']['Not_Sure'] = sure_status
     data_export['AdressPhone']['Exists'] = True    
     data_export['AdressPhone']['FullName'] = full_name
     data_export['AdressPhone']['Phone'] = phone
     data_export['AdressPhone']['Adress'] = adress
-
-    tree.create_node("Adress - Phone",2,parent=1)
+    if sure_status == True:
+        tree.create_node("Adress - Phone",2,parent=1)
+    else:
+        tree.create_node("Adress - Phone (You must verify this information)",2,parent=1)
     tree.create_node("Full Name : {}".format(full_name),22,parent=2)
     tree.create_node("Adress    : {}".format(adress),33,parent=2)
     tree.create_node("Phone     : {}".format(phone),44,parent=2)
