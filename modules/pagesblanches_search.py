@@ -2,8 +2,11 @@ import requests, bs4, colorama
 from colorama import Fore
 from bs4      import BeautifulSoup
 
-def adresse_search(name,pren):
-    r = requests.get('https://www.118000.fr/search?part=1&who={} {}'.format(name,pren))
+def adresse_search(name,pren,zipc):
+    if zipc is not None:
+        r = requests.get('https://www.118000.fr/search?part=1&label={}&who={} {}'.format(zipc,name,pren))
+    else:
+        r = requests.get('https://www.118000.fr/search?part=1&who={} {}'.format(name,pren))
     page = r.content
     features = "html.parser"
     soup = BeautifulSoup(page, features)
@@ -11,30 +14,19 @@ def adresse_search(name,pren):
     target_name = soup.find("h2", {"class": "name title inbl"})
     target_addr = soup.find("div", {"class": "h4 address mtreset"})
     target_phon = soup.find('a',{'class':'clickable atel'})
+    if target_name is not None:
+        return  {'Not_Sure':False,'Phone':phon_full,'Name':name_full,'Adress':addr_full,'Type_tel':None,"Loc_phone":None,'carrier':None}
+    elif target_name is None:
+        try:
+            r = requests.get('https://www.118000.fr/search?part=1&label={}&who={}'.format(zipc,name))
+            page = r.content
+            features = "html.parser"
+            soup = BeautifulSoup(page, features)
 
-    try:
-        name_full = (target_name.text.strip())
-        addr_full = (target_addr.text.replace(', voir sur la carte','').replace('\n',' ').strip())
-        phon_full = (target_phon.text.strip())
+            name_full = soup.find("h2", {"class": "name title inbl"}).text.strip()
+            addr_full = soup.find("div", {"class": "h4 address mtreset"}).text.replace(', voir sur la carte','').replace('\n',' ').strip()
+            phon_full = soup.find('a',{'class':'clickable atel'}).text.strip()
 
-        if name.lower() in name_full.lower():
-            try:
-                r = requests.get('https://www.infos-numero.com/ajax/NumberInfo?num={}'.format(phon_full))
-                data = r.json()
-
-                type_tel = (data['info']['type'])
-                if type_tel == "FIXED_LINE":
-                    type_tel = "Fixe"
-                carrier = (data['info']['carrier'])
-                if len(carrier) <= 1:
-                    carrier = 0
-                    carrier = None
-                localisation = (data['info']['ville'])
-                text = {'Phone':phon_full,'Name':name_full,'Adress':addr_full,'Type_tel':type_tel,"Loc_phone":localisation,'carrier':carrier}
-                return text
-            except:
-                return  {'Phone':phon_full,'Name':name_full,'Adress':addr_full,'Type_tel':None,"Loc_phone":None,'carrier':None}
-        else:
+            return  {'Not_Sure':True,'Phone':phon_full,'Name':name_full,'Adress':addr_full,'Type_tel':None,"Loc_phone":None,'carrier':None}
+        except AttributeError:
             return None
-    except AttributeError:
-        return None
