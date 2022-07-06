@@ -16,6 +16,7 @@
     },
 
     "AdressPhone":{
+        "Not_Sure":false,
         "Exists":false,
         "FullName":false,
         "Adress":false,
