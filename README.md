@@ -47,7 +47,10 @@ options:
                         Print result in json
   -zp ZP, --zp ZP       Zip code (Optional)
 ```
-
+## Exemple
+```
+py profiler.py -n john -ln doe -zp 75012 -json true
+```
 ## Demo
 ![alt text](https://i.ibb.co/XSzG90S/Capture-censored.jpg)
 
