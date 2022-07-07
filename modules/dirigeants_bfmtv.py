@@ -18,12 +18,14 @@ def bfmtv_search(name,pren):
             page = r.content
             features = "html.parser"
             soup = BeautifulSoup(page, features)
+
+            desc = soup.find('p',{'class':'mid hidden-smallDevice'}).text.strip()
+            capital = soup.find('span',{'class':'number'}).text.strip()
             entreprise = soup.find('h3',{'class':'subtitle'}).text.strip()
-            #adresse = soup.find('p',{'class':'mid'}).text.strip()
             adresse_full= str(soup.find('a',{'class':'visible-smallDevice link'})).split('"_blank">')[1]
             adresse       = adresse_full.split("<br/>")[0]
             cp            = adresse_full.split("<br/>")[1].split("</a>")[0]
-            text = {"addr":adresse+cp,'company':entreprise,'link':link,'full_name':full_name,'naissance':naissance,'mandats':mandats,'fonction':fonction}
+            text = {"Capital":capital,"Desc":desc,"addr":adresse+cp,'company':entreprise,'link':link,'full_name':full_name,'naissance':naissance,'mandats':mandats,'fonction':fonction}            
             return text
         except AttributeError:
             return None
