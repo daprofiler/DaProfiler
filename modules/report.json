@@ -31,7 +31,9 @@
         "Company":false,
         "Function":false,
         "Warrant":false,
-        "Link":false
+        "Link":false,
+        "Capital":false,
+        "Desc":false
     },
     "Diploma_Bac":{
         "Exists":false,
