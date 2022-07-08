@@ -28,4 +28,4 @@ jobs:
         python profiler.py -n marie -ln lacourt
     - name: Test code JSON mode
       run: |
-        python profiler.py -n marie -ln lacourt --json JSON
+        python profiler.py -n marie -ln lacourt --json true
