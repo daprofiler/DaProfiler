@@ -624,7 +624,7 @@ try:
 except TypeError:
     data_export['UI']['Bar']['SkypeFounds']     = 0
 
-if json_print.lower() == "true" or json_print.lower() == "yes" or json_print.lower() == "oui":
+if json_print == "true" or json_print == "yes" or json_print == "oui":
     print('-- JSON START --')
     print(data_export)
     print('-- JSON END --')
