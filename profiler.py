@@ -60,7 +60,18 @@ def banner():
     else:
         os.system('clear')
 
-    art = """"""
+    art = """
+▓█████▄  ▄▄▄       ██▓███   ██▀███   ▒█████    █████▒██▓ ██▓    ▓█████  ██▀███  
+▒██▀ ██▌▒████▄    ▓██░  ██▒▓██ ▒ ██▒▒██▒  ██▒▓██   ▒▓██▒▓██▒    ▓█   ▀ ▓██ ▒ ██▒
+░██   █▌▒██  ▀█▄  ▓██░ ██▓▒▓██ ░▄█ ▒▒██░  ██▒▒████ ░▒██▒▒██░    ▒███   ▓██ ░▄█ ▒
+░▓█▄   ▌░██▄▄▄▄██ ▒██▄█▓▒ ▒▒██▀▀█▄  ▒██   ██░░▓█▒  ░░██░▒██░    ▒▓█  ▄ ▒██▀▀█▄  
+░▒████▓  ▓█   ▓██▒▒██▒ ░  ░░██▓ ▒██▒░ ████▓▒░░▒█░   ░██░░██████▒░▒████▒░██▓ ▒██▒
+ ▒▒▓  ▒  ▒▒   ▓▒█░▒▓▒░ ░  ░░ ▒▓ ░▒▓░░ ▒░▒░▒░  ▒ ░   ░▓  ░ ▒░▓  ░░░ ▒░ ░░ ▒▓ ░▒▓░
+ ░ ▒  ▒   ▒   ▒▒ ░░▒ ░       ░▒ ░ ▒░  ░ ▒ ▒░  ░      ▒ ░░ ░ ▒  ░ ░ ░  ░  ░▒ ░ ▒░
+ ░ ░  ░   ░   ▒   ░░         ░░   ░ ░ ░ ░ ▒   ░ ░    ▒ ░  ░ ░      ░     ░░   ░ 
+   ░          ░  ░            ░         ░ ░          ░      ░  ░   ░  ░   ░     
+ ░                                                                              
+    """
     print(art)
     print("DaProfiler - Inspired from Profiler CToS #watchdogs")
     print("Github : https://github.com/TheRealDalunacrobate\n\n\n")
@@ -439,21 +450,30 @@ if instagram_results is not None:
             number_ski = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
             bio_infos = instagram_search.getInstagramEmailFromBio(username)
             tree.create_node(i,number_ski,parent=13)
-            data = instagram_search.get_extra_data(username)
-            if data is not None:
-                if data['obfuscated_email'] is not None:
-                    ob_mail = data['obfuscated_email']
-                    tree.create_node("Obfuscated Email -> "+ob_mail,parent=number_ski)
-                else:
-                    ob_mail = False
-                if data['obfuscated_phone'] is not None:
-                    ob_phone = data['obfuscated_phone']
-                    tree.create_node("Obfuscated Phone -> "+ob_phone,parent=number_ski)
-                else:
+            try: 
+                data = instagram_search.get_extra_data(username)
+                if data is None: 
                     ob_phone = False
-            else:
-                ob_phone = False
-                ob_mail  = False
+                    ob_mail  = False
+                    pass
+                else:
+                    if data != {}:
+                        if data['obfuscated_email'] is not None:
+                            ob_mail = data['obfuscated_email']
+                            tree.create_node("Obfuscated Email -> "+ob_mail,parent=number_ski)
+                        else:
+                            ob_mail = False
+                        if data['obfuscated_phone'] is not None:
+                            ob_phone = data['obfuscated_phone']
+                            tree.create_node("Obfuscated Phone -> "+ob_phone,parent=number_ski)
+                        else:
+                            ob_phone = False
+                    else:
+                        ob_phone = False
+                        ob_mail  = False
+            finally:
+                pass
+
             acc_json_list.append({"Username":username,'obfuscated_phone':ob_phone,'obfuscated_email':ob_mail})
 
             bio_emails = bio_infos['emails']
@@ -604,8 +624,10 @@ try:
 except TypeError:
     data_export['UI']['Bar']['SkypeFounds']     = 0
 
-if json_print == "true":
-    print(str(data_export))
+if json_print.lower() == "true" or json_print.lower() == "yes" or json_print.lower() == "oui":
+    print('-- JSON START --')
+    print(data_export)
+    print('-- JSON END --')
 else:    
     tree.show()
     

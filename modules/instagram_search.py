@@ -401,16 +401,18 @@ def advanced_lookup(username):
 def get_extra_data(username):
     data = advanced_lookup(username)
     final_dict = {}
-    status = data['user']['status']
-    if status != "ok":
-        return None
-    else:
-        try:
-            final_dict['obfuscated_email'] = data['user']['obfuscated_email']
-        except KeyError:
-            final_dict['obfuscated_email'] = None
-        try:
-            final_dict['obfuscated_phone'] = data['user']['obfuscated_phone']
-        except KeyError:
-            final_dict['obfuscated_phone'] = None
-    return final_dict
+    try: 
+        status = data['user']['status']
+        if status != "ok":
+            return None
+        else:
+            try:
+                final_dict['obfuscated_email'] = data['user']['obfuscated_email']
+            except KeyError:
+                final_dict['obfuscated_email'] = None
+            try:
+                final_dict['obfuscated_phone'] = data['user']['obfuscated_phone']
+            except KeyError:
+                final_dict['obfuscated_phone'] = None
+    finally:
+        return final_dict
