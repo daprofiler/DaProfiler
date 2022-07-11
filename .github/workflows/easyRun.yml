@@ -1,18 +1,19 @@
 
-name: Daprofiler Eas run
+name: Daprofiler Easy run
 
 on:
   workflow_dispatch:
-    name:
-      runners:
-        description: 'nom'     
-        required: true
-        default: 'marie'
-    lastname:
-      runners:
-        description: 'prenom'     
-        required: true
-        default: 'lacourt'
+    inputs:
+      name:
+        runners:
+          description: 'nom'     
+          required: true
+          default: 'marie'
+      lastname:
+        runners:
+          description: 'prenom'     
+          required: true
+          default: 'lacourt'
 
 permissions:
   contents: read
