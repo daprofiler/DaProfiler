@@ -7,10 +7,12 @@ on:
       runners:
         description: 'nom'     
         required: true
+        default: 'marie'
     lastname:
       runners:
         description: 'prenom'     
         required: true
+        default: 'lacourt'
 
 permissions:
   contents: read
