@@ -1,8 +1,5 @@
-https://discord.gg/x33VN6Pkea
-
+> educational propose only
 > Depreciated for the moment, please wait Daprofiler v2, thx
-
-> Any update ? create a branch named `added-YOUUPDATE` and open a pull request. Your code will be checked
 
 ![alt text](./files/logo.png)
 
@@ -11,7 +8,6 @@ https://discord.gg/x33VN6Pkea
 ![](https://visitor-badge.laobi.icu/badge?page_id=TheRealDalunacrobate.daprofiler)
 
 
-> educational propose only
 
 DaProfiler is an OSINT tool allowing you to collect certain information about yourself in order to rectify by rgpd requests the traces you may have left on the net.
 DaProfiler is indeed able to recover: Addresses, Social media accounts, e-mail addresses, mobile / landline number, jobs. On a specified subject in a limited time.
@@ -70,6 +66,7 @@ py profiler.py -n john -ln doe -zp 75012 -json true
 # Contact
 Mail : _daluna_pro@protonmail.ch_. <br>
 Discord : `Dalunacrobate#9010` <br>
+https://discord.gg/x33VN6Pkea
 
 
 ## Contributions
