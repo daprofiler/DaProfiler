@@ -11,6 +11,8 @@ https://discord.gg/x33VN6Pkea
 ![](https://visitor-badge.laobi.icu/badge?page_id=TheRealDalunacrobate.daprofiler)
 
 
+> educational propose only
+
 DaProfiler is an OSINT tool allowing you to collect certain information about yourself in order to rectify by rgpd requests the traces you may have left on the net.
 DaProfiler is indeed able to recover: Addresses, Social media accounts, e-mail addresses, mobile / landline number, jobs. On a specified subject in a limited time.
 DaProfiler is designed for Educational Purposes only, We accept no responsibility for the use you make of it.
@@ -55,16 +57,15 @@ py profiler.py -n john -ln doe -zp 75012 -json true
 ![alt text](https://i.ibb.co/XSzG90S/Capture-censored.jpg)
 
 ## Api
-| Source | Service type | Subscription | Key in code |
+| Source | Service type | Subscription |
 | :---: | :---: | :---: | :---: |
-| Leakcheck.net | Breach Search | Premium | No | 
-| apilayer.net | Phone infos | Free (In code) | Yes |
+| Leakcheck.net | Breach Search | Premium | 
 
-Add your premium api keys :
 + Go to [modules\api_modules](https://github.com/TheRealDalunacrobate/DaProfiler/tree/main/modules/api_modules) then open your API module (ex Leakcheck), replace "YOUR_KEY" to your key, save and quit your text editor.
 
-> educational propose only
 
+# Connect to LinkedIN API
++ Go to [modules\linkedin_search](https://github.com/daprofiler/DaProfiler/blob/main/modules/linkedin_search.py) then add your creditentials.
 
 # Contact
 Mail : _daluna_pro@protonmail.ch_. <br>
