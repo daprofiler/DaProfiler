@@ -62,7 +62,15 @@
         "HighProbEmails":false,
         "PermutatedMailbox":false
     },
-
+    "LinkedIN":{
+        "Exists":false,
+        "Job":false,
+        "urnid":false,
+        "Url":false,
+        "Twitters":false,
+        "Birthdate":false,
+        "PhoneNumbers":false
+    },
     "Facebook":{
         "Exists":false,
         "AccountList":false
