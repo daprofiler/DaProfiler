@@ -108,7 +108,7 @@ except FileExistsError:
 # Main
 try:
     if pren and name is not None:
-        bar = tqdm(desc="Searching over the world",total=11,leave=True)
+        bar = tqdm(desc="Searching over the world",total=12,leave=True)
         try:
             copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
         except:
@@ -130,6 +130,11 @@ try:
 
         bar.update(1)
 
+        try:
+            official_linkedin_search_results = linkedin_search.official_linkedin_search(pren=pren,name=name)
+        except:
+            official_linkedin_search_results = None
+        bar.update(1)
         try:
             avis_deces_results = death_records.death_search(name=name,pren=pren)
         except:
@@ -261,6 +266,44 @@ if linkedin_results is not None:
     tree.create_node(linkedin_results,parent=15418911611515145145)
 
 # Daprofiler check les pages blanches
+if official_linkedin_search_results is not None:
+    job           = official_linkedin_search_results['Job']
+    email         = official_linkedin_search_results['email']
+    urnid         = official_linkedin_search_results['urnid']
+    url           = official_linkedin_search_results['url']
+    twitters      = official_linkedin_search_results['twitters']
+    birthdate     = official_linkedin_search_results['birthdate']
+    phone_numbers = official_linkedin_search_results['phone_numbers']
+
+    tree.create_node('LinkedIN (Via API)',15458156411556562162,parent=1)
+    tree.create_node(f'UrnID : {urnid}',5151515155,parent=15458156411556562162)
+    tree.create_node(f'Url   : {url}',55185514542335,parent=15458156411556562162)
+    if len(twitters) > 0:
+        tree.create_node('Twitters',25848145481514,parent=15458156411556562162)
+        for i in twitters:
+            tree.create_node(i,parent=25848145481514)
+    else:
+        pass
+    if len(phone_numbers) > 0:
+        tree.create_node('Phone Numbers',28945181781,parent=15458156411556562162)
+        for i in phone_numbers:
+            tree.create_node(i,parent=28945181781)
+    else:
+        pass
+    if job is not None:
+        tree.create_node(f'Job : {job}',511515,parent=15458156411556562162)
+    if birthdate is not None:
+        tree.create_node(f'Birth Date : {birthdate}',5881981648,parent=1058151514851)
+    if email is not None:
+        tree.create_node(f'Email : {str(email)}',parent=15458156411556562162)
+    data_export['LinkedIN']['Exist']        = True
+    data_export['LinkedIN']['Job']          = job
+    data_export['LinkedIN']['urnid'       ] = urnid
+    data_export['LinkedIN']['Url']          = url
+    data_export['LinkedIN']['Twitters']     = twitters
+    data_export['LinkedIN']['Birthdate']    = birthdate
+    data_export['LinkedIN']['PhoneNumbers'] = phone_numbers
+
 if pagesblanche is not None:
     personnal_life.append('.')
     full_name = pagesblanche['Name']
