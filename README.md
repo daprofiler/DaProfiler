@@ -67,7 +67,7 @@ py profiler.py -n john -ln doe -zp 75012 -json true
 # Contact
 Mail : _daluna_pro@protonmail.ch_. <br>
 Discord : `Dalunacrobate#9010` <br>
-https://discord.gg/x33VN6Pkea
+[Official DaProfiler - Discord Server](https://discord.gg/x33VN6Pkea)
 
 
 ## Contributions
