@@ -427,9 +427,11 @@ if twitter_results is not None:
     social_medias.append('.')
     data_export['Twitter']['Exists'] = True
     data_export['Twitter']['Accounts'] = twitter_results
-    tree.create_node("Twitter",5,parent=1)
+    tree.create_node('Twitters',665847555858,parent=1)
     for i in twitter_results:
-        tree.create_node(i,parent=5)
+        chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+        number_sk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)        
+        tree.create_node(i,number_sk,parent=665847555858)
 
 # Daprofiler check skype
 if skype_results is not None:
