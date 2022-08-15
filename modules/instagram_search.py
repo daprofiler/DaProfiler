@@ -338,7 +338,7 @@ def getInstagramEmailFromBio(username):
     return get_info_from_bio(bioo)
 
 def ig_search(name,pren):
-    url = "https://www.picuki.com/search/{}+{}".format(pren,name)
+    url = "https://www.picuki.com/search/{} {}".format(pren,name)
 
     r = requests.get(url=url)
     page = r.content.decode()
