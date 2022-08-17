@@ -54,8 +54,9 @@ py profiler.py -n john -ln doe -zp 75012 -json true
 ![alt text](https://i.ibb.co/XSzG90S/Capture-censored.jpg)
 
 ## Api
+
 | Source | Service type | Subscription |
-| :---: | :---: | :---: | :---: |
+| :----: | :----------: | :----------: |
 | Leakcheck.net | Breach Search | Premium | 
 
 + Go to [modules\api_modules](https://github.com/TheRealDalunacrobate/DaProfiler/tree/main/modules/api_modules) then open your API module (ex Leakcheck), replace "YOUR_KEY" to your key, save and quit your text editor.
