@@ -65,6 +65,7 @@
     "LinkedIN":{
         "Exists":false,
         "Job":false,
+        "Location":false,
         "urnid":false,
         "Url":false,
         "Twitters":false,
