@@ -266,6 +266,8 @@ if linkedin_results is not None:
     tree.create_node(linkedin_results,parent=15418911611515145145)
 try:
     if official_linkedin_search_results is not None:
+
+        Loc           = official_linkedin_search_results['Loc']
         job           = official_linkedin_search_results['Job']
         email         = official_linkedin_search_results['email']
         urnid         = official_linkedin_search_results['urnid']
@@ -289,6 +291,8 @@ try:
                 tree.create_node(i,parent=28945181781)
         else:
             pass
+        if Loc != False:
+            tree.create_node(f'Location : {Loc}',4561561510515656,parent=15458156411556562162)
         if job is not None:
             tree.create_node(f'Job : {job}',511515,parent=15458156411556562162)
         if birthdate is not None:
@@ -410,18 +414,17 @@ if bfmtv_results is not None:
     data_export['Work']['Link']     = bfmtv_results['link'].replace('https://','')
     data_export['Work']['Capital']  = bfmtv_results['Capital']
     data_export['Work']['Desc']     = bfmtv_results['Desc']
-
+    
     tree.create_node("Work - Job",4,parent=1)
-    tree.create_node('Full Name : {}'.format(bfmtv_results['full_name']),222,parent=4)
-    tree.create_node('Born Date : {}'.format(bfmtv_results['naissance']),333,parent=4)
-    tree.create_node('Adress    : {}'.format(bfmtv_results['addr']),888,parent=4)
-    tree.create_node('Company   : {}'.format(bfmtv_results['company']),777,parent=4)
-    tree.create_node('Desc      : {}'.format(bfmtv_results['Desc']),78285,parent=4)
-    tree.create_node('Capital   : {}'.format(bfmtv_results['Capital']),84566,parent=4)
-    tree.create_node('Link      : {}'.format(bfmtv_results['link']),666,parent=4)
-    tree.create_node('Function  : {}'.format(bfmtv_results['fonction']),444,parent=4)
-    tree.create_node('Warrant   : {}'.format(bfmtv_results['mandats']),555,parent=4)
-
+    tree.create_node('Full Name  : {}'.format(bfmtv_results['full_name']),222,parent=4)
+    tree.create_node('Born Date  : {}'.format(bfmtv_results['naissance']),333,parent=4)
+    tree.create_node('Adress     : {}'.format(bfmtv_results['addr']),888,parent=4)
+    tree.create_node('Company    : {}'.format(bfmtv_results['company']),777,parent=4)
+    tree.create_node('Desc       : {}'.format(bfmtv_results['Desc']),78285,parent=4)
+    tree.create_node('Capital    : {}'.format(bfmtv_results['Capital']),84566,parent=4)
+    tree.create_node('Link       : {}'.format(bfmtv_results['link']),666,parent=4)
+    tree.create_node('Function   : {}'.format(bfmtv_results['fonction']),444,parent=4)
+    tree.create_node('Warrant    : {}'.format(bfmtv_results['mandats']),555,parent=4)
 # Daprofiler check twitter
 if twitter_results is not None:
     social_medias.append('.')
