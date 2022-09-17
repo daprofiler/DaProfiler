@@ -34,13 +34,19 @@ def official_linkedin_search(name,pren):
             twitters        = profile_contact['twitter']
             birthdate       = profile_contact['birthdate']
             phone_numbers   = profile_contact['phone_numbers']
+            profile_infosz        = api.get_profile(public_id)
+            location        = profile_infosz['geoLocationName']
+            bio             = profile_infosz['headline']
+            
             try:
                 job = (profile_infos['headline'])
             except:
                 job = None
 
             data = {
+                'Loc':location,
                 'Job':job,
+                'Bio':bio,
                 'email':email_adress,
                 'urnid':urn_id,
                 'url':'https://www.linkedin.com/in/'+public_id,
@@ -49,5 +55,7 @@ def official_linkedin_search(name,pren):
                 'phone_numbers':phone_numbers
             }
             return data
+
+
 
 
