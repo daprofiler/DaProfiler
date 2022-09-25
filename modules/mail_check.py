@@ -1,7 +1,7 @@
 import requests
 
 def verify(mail):
-    response = requests.get("https://isitarealemail.com/api/email/validate",params = {'email': mail},headers = {'Authorization': "Bearer " + "21000771-6911-402d-9d32-7697238803e8" })
+    response = requests.get("https://isitarealemail.com/api/email/validate",params = {'email': mail},headers = {'Authorization': "Bearer " + "21a3f468-1c3a-43d6-bdd6-d5437d6c0252" })
     try:
         data = response.json()
         status = data['status']
