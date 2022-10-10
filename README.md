@@ -2,10 +2,6 @@
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/TheRealDalunacrobate/daprofiler)
 ![](https://visitor-badge.laobi.icu/badge?page_id=TheRealDalunacrobate.daprofiler)
 
-![alt text](https://i.ibb.co/Dbb3k29/image-2022-09-17-142327093.png)
-
-
-
 DaProfiler is an OSINT tool allowing you to collect certain information about yourself in order to rectify by rgpd requests the traces you may have left on the net.
 DaProfiler is indeed able to recover: Addresses, Social media accounts, e-mail addresses, mobile / landline number, jobs. On a specified subject in a limited time.
 DaProfiler is designed for Educational Purposes only, We accept no responsibility for the use you make of it.
@@ -56,9 +52,6 @@ py profiler.py -n john -ln doe -zp 75012 -json true
 
 # Contact
 Mail : _daluna_pro@protonmail.ch_. <br>
-Discord : `Dalunacrobate#9010` <br>
-[Official DaProfiler - Discord Server](https://discord.gg/x33VN6Pkea)
-
 
 ## Contributions
 All suggestions are welcome.
