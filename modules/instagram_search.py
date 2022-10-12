@@ -227,6 +227,7 @@ def get_info_from_bio(bio):
             line = line.replace('📩','')
             temp_list_emails = []
         if "/" in line and '"' in line:
+            temp_list_emails = []
             line = (line.replace('/','@').split('"')[0])
             temp_list_emails.append('.')
             try:
@@ -318,25 +319,39 @@ def get_info_from_bio(bio):
     
 def getInstagramEmailFromBio(username):
     
-    url = "https://smihub.com/v/{}".format(username.replace('@',''))
+    url = "https://www.picuki.com/profile/{}".format(username.replace('@',''))
 
     r = requests.get(url=url)
     page = r.content.decode()
     features = "html.parser"
     soup = BeautifulSoup(page,features)
 
-    bioo = str(soup.find('div',{'class':'user__info-desc'}))
-
-    bioo = bioo.replace('<div','').replace('</div>','').replace('class="user__info-desc">','').strip()
-
-    while "<br/" in bioo:
-        bioo = bioo.replace('<br/','\n')
-
-    while ">" in bioo:
-        bioo = bioo.replace(">",'')
+    try:
+        bioo = str(soup.find('div',{'class':'profile-description'})).split('profile-description">')[1].split('</div>')[0]
+    except:
+        bioo = "Lol"
     
     return get_info_from_bio(bioo)
 
+def get_profile_infos(profile):
+    r    = requests.get('https://www.picuki.com/profile/leaelui')
+    page = r.content
+    features = "html.parser"
+    soup = BeautifulSoup(page, features)
+
+    bio = soup.find('div',{'class':'profile-description'})
+    followings = soup.find('span',{'class':'follows'})
+    followers  = soup.find('span',{'class':'followed_by'})
+    posts      = soup.find('span',{'class':'total_posts'})
+
+    dictt = {
+        'Bio':bio,
+        'Following':followings,
+        'Followers':followers
+    }
+
+    return dictt
+    
 def ig_search(name,pren):
     url = "https://www.picuki.com/search/{} {}".format(pren,name)
 
@@ -352,7 +367,7 @@ def ig_search(name,pren):
         i = str(i)
         profiles.append(i.replace('<div class="result-username">','').replace('</div>','').strip())
     return profiles
-
+    
 # ============================================================================
 
 """
@@ -401,18 +416,16 @@ def advanced_lookup(username):
 def get_extra_data(username):
     data = advanced_lookup(username)
     final_dict = {}
-    try: 
-        status = data['user']['status']
-        if status != "ok":
-            return None
-        else:
-            try:
-                final_dict['obfuscated_email'] = data['user']['obfuscated_email']
-            except KeyError:
-                final_dict['obfuscated_email'] = None
-            try:
-                final_dict['obfuscated_phone'] = data['user']['obfuscated_phone']
-            except KeyError:
-                final_dict['obfuscated_phone'] = None
-    finally:
-        return final_dict
+    status = data['user']['status']
+    if status != "ok":
+        return None
+    else:
+        try:
+            final_dict['obfuscated_email'] = data['user']['obfuscated_email']
+        except KeyError:
+            final_dict['obfuscated_email'] = None
+        try:
+            final_dict['obfuscated_phone'] = data['user']['obfuscated_phone']
+        except KeyError:
+            final_dict['obfuscated_phone'] = None
+    return final_dict
