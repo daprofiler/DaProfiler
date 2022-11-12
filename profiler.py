@@ -29,19 +29,19 @@ from colorama   import Fore, Back, Style, init
 from statistics import mean
 init(autoreset=True)
 from modules  import skype_search
-from modules  import pagesblanches_search
 from modules  import copainsdavant_search
 from modules  import instagram_search
-from modules  import dirigeants_bfmtv
-from modules  import death_records
 from modules  import twitter_search
 from modules  import facebook_search
+from modules  import linkedin_search
+from modules  import dirigeants_bfmtv
+from modules  import death_records
+from modules  import pagesblanches_search
 from modules  import mail_gen
 from modules  import scylla_sh
 from modules  import mail_check
-from modules  import linkedin_search
 from modules  import last_diplomes
-
+from modules  import soundclound
 from modules.visual      import logging
 from modules.api_modules import leakcheck_net
 
@@ -60,8 +60,25 @@ def banner():
     else:
         os.system('clear')
 
-    print("DaProfiler - Inspired from Profiler CToS #watchdogs")
-    print("Github : https://github.com/TheRealDalunacrobate\n\n\n")
+    print("""
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠾⠛⢉⣉⣉⣉⡉⠛⠷⣦⣄⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠋⣠⣴⣿⣿⣿⣿⣿⡿⣿⣶⣌⠹⣷⡀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠁⣴⣿⣿⣿⣿⣿⣿⣿⣿⣆⠉⠻⣧⠘⣷⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡇⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⠈⠀⢹⡇⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⢸⣿⠛⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀⠀⠀⢸⡇⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣷⠀⢿⡆⠈⠛⠻⠟⠛⠉⠀⠀⠀⠀⠀⠀⣾⠃⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣧⡀⠻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠃⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢼⠿⣦⣄⠀⠀⠀⠀⠀⠀⠀⣀⣴⠟⠁⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣦⠀⠀⠈⠉⠛⠓⠲⠶⠖⠚⠋⠉⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⣠⣾⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⣾⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⢀⣄⠈⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    """)
+    print("        Get someone's digital identity anonymously 👻 ")
+    print("             Made by "+Style.BRIGHT+Fore.RED+"TheRealDalunacrobate "+Fore.RESET+Style.RESET_ALL+"with 💝")
 banner()
 
 # Get the arguments
@@ -108,70 +125,59 @@ except FileExistsError:
 # Main
 try:
     if pren and name is not None:
-        bar = tqdm(desc="Searching over the world",total=12,leave=True)
+        print("\n🎭 Finding and filtering online identities ...")
         try:
             copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
         except:
             copainsdavant_results = None
-        bar.update(1)
-        bar.get_lock()
+
 
         try:
             facebook_results = facebook_search.facebook_search(name=name,pren=pren)
         except:
             facebook_results = None
 
-        bar.update(1)
-
         try:
             twitter_results = twitter_search.twitter_search(name=name,pren=pren)
         except:
             twitter_results = None
 
-        bar.update(1)
-
         try:
             official_linkedin_search_results = linkedin_search.official_linkedin_search(pren=pren,name=name)
         except:
             official_linkedin_search_results = None
-        bar.update(1)
+
         try:
             avis_deces_results = death_records.death_search(name=name,pren=pren)
         except:
             avis_deces_results = None
         
-        bar.update(1)
         try:
             bfmtv_results = dirigeants_bfmtv.bfmtv_search(name=name,pren=pren)
         except:
             bfmtv_results = None
-        bar.update(1)
 
 
         try:
             instagram_results = instagram_search.ig_search(name=name,pren=pren)
         except:
             instagram_results = None
-        bar.update(1)
 
         try:
             skype_results = skype_search.skype_searchh(name=name,pren=pren)
         except:
             skype_results = None
 
-        bar.update(1)
         try:
             diplomess = last_diplomes.last_diplomes_brevet(name=name,pren=pren)
         except :
             diplomess = None
 
-        bar.update(1)
         try:
             diplome_bac = last_diplomes.last_diplomes_bac(name=name,pren=pren)
         except:
             diplome_bac = None
 
-        bar.update(1)
         try:
             if zip_code is not None:
                 pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren,zipc=str(zip_code))
@@ -180,15 +186,13 @@ try:
         except:
             pagesblanche = None
 
-        bar.update(1)
 
         try:
             linkedin_results = linkedin_search.linkedin_search(name=name,pren=pren)
         except:
             linkedin_results = None
-
-        bar.update(1)
-        bar.close()
+            
+        soundclound.webdriver_usage(name=name,pren=pren)
         possible_mail = mail_gen.check(name=name,pren=pren)
         skype2mail = mail_gen.skype2email(name=name,pren=pren)
         pin2mail = mail_gen.pinterest2email(name=name,pren=pren)
@@ -632,14 +636,9 @@ if possible_mail is not None:
             data_export['Emails']['PermutatedMailbox'] = possible_mail
             for i in possible_mail:
                 tree.create_node(i,parent=8)
-
-#banner()
-if sys.platform == "win32":
-    os.system('cls')
-else:
-    os.system('clear')
-
-# For data analyse
+print("✅ Ready to be consulted !")
+print('\n')
+# For data Analyzation
 data_export['UI']['Pie']['PersonnalLife']   = len(personnal_life)
 data_export['UI']['Pie']['SocialMedias']    = len(social_medias)
 try:
