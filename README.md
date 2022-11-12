@@ -8,7 +8,7 @@ DaProfiler is designed for Educational Purposes only, We accept no responsibilit
 
 ## Install
 
-Python 3.8 required
+Python 3.8 & Mozilla Firefox required
 ```bash
 git clone https://github.com/TheRealDalunacrobate/DaProfiler.git
 cd DaProfiler
