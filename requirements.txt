@@ -1,5 +1,6 @@
 requests
 bs4
+selenium
 colorama
 googlesearch-python
 treelib
