@@ -41,7 +41,7 @@ from modules  import mail_gen
 from modules  import scylla_sh
 from modules  import mail_check
 from modules  import last_diplomes
-from modules  import soundclound
+from modules  import soundcloud
 from modules.visual      import logging
 from modules.api_modules import leakcheck_net
 
