@@ -1,14 +1,16 @@
-from googlesearch import search
 from linkedin_api import Linkedin
 
 def linkedin_search(name,pren):
     try:
+        """
         a = search('"{} {}" -intitle:"profiles" -inurl:"dir/ " site:fr.linkedin.com/in/ OR site:fr.linkedin.com/pub/'.format(pren,name), lang="fr")
         if len(a) > 0:
             if name.lower() in a[0] and pren.lower() in a[0]:
                 return a[0]
         else:
             return None
+        """
+        return None
     except:
         pass
 
@@ -55,7 +57,5 @@ def official_linkedin_search(name,pren):
                 'phone_numbers':phone_numbers
             }
             return data
-
-
 
 
