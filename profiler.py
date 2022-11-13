@@ -236,6 +236,7 @@ except TypeError:
     pagesblanche = None
     possible_mail = None
     skype2mail = None
+    diplomess = None
     pren = ""
     name = ""  
 
