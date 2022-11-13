@@ -7,7 +7,7 @@ def webdriver_usage(name,pren):
     try:
         try:
             options = webdriver.FirefoxOptions()
-            #options.headless = True
+            options.headless = True
             driver = webdriver.Firefox(options=options)
             driver.get(f"https://soundcloud.com/search/people?q={pren} {name}")
             time.sleep(4.0)
