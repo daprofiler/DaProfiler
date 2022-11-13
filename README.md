@@ -18,15 +18,13 @@ pip install -r requirements.txt
 
 ```bash
 
-usage: profiler.py [-h] [-n NAME] [-ln LASTNAME] [-u UPDATE] [-json JSON] [-zp ZP]
+usage: profiler.py [-h] [-n NAME] [-ln LASTNAME] [-json JSON] [-zp ZP]
 
 options:
   -h, --help            show this help message and exit
   -n NAME, --name NAME  Victim name
   -ln LASTNAME, --lastname LASTNAME
                         Last name of victim
-  -u UPDATE, --update UPDATE
-                        Update DaProfiler
   -json JSON, --json JSON
                         Print result in json
   -zp ZP, --zp ZP       Zip code (Optional)
