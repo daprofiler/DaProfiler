@@ -41,7 +41,7 @@ from modules  import mail_gen
 from modules  import scylla_sh
 from modules  import mail_check
 from modules  import last_diplomes
-from modules  import soundclound
+from modules  import soundcloud
 from modules.visual      import logging
 from modules.api_modules import leakcheck_net
 
@@ -192,7 +192,7 @@ try:
         except:
             linkedin_results = None
             
-        soundclound.webdriver_usage(name=name,pren=pren)
+        soundcloud.webdriver_usage(name=name,pren=pren)
         possible_mail = mail_gen.check(name=name,pren=pren)
         skype2mail = mail_gen.skype2email(name=name,pren=pren)
         pin2mail = mail_gen.pinterest2email(name=name,pren=pren)
