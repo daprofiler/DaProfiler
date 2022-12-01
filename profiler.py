@@ -443,7 +443,7 @@ if twitter_results is not None:
         for domain in domain_list:
             a = mail_check.verify(i.replace('@','')+domain)
             if a == "True":
-                temp.append(i.replace('@','')+domain)
+                temp.append(i.replace('@','').lower()+domain)
         if len(temp) == 0:
             tree.create_node(i,parent=665847555858)
         else:
