@@ -6,7 +6,7 @@ def verify(mail):
         data = response.json()
         status = data['status']
         if status == "valid":
-            return True
+            return "True"
         elif status == "invalid":
             return None
         else:
