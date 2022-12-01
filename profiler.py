@@ -442,7 +442,7 @@ if twitter_results is not None:
         domain_list = ['@gmail.com','@hotmail.fr','@hotmail.com','@orange.fr','@outlook.com','@outlook.fr']
         for domain in domain_list:
             a = mail_check.verify(i.replace('@','')+domain)
-            if a == True:
+            if a == "True":
                 temp.append(i.replace('@','')+domain)
         if len(temp) == 0:
             tree.create_node(i,parent=665847555858)
