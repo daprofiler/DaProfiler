@@ -236,7 +236,6 @@ except TypeError:
     pagesblanche = None
     possible_mail = None
     skype2mail = None
-    diplomess = None
     pren = ""
     name = ""  
 
@@ -437,10 +436,20 @@ if twitter_results is not None:
     data_export['Twitter']['Accounts'] = twitter_results
     tree.create_node('Twitters',665847555858,parent=1)
     for i in twitter_results:
+        temp = []
         chars = "abcdefghijklmnopqrstuvwxyz1234567890"
         number_sk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)        
-        tree.create_node(i,number_sk,parent=665847555858)
-
+        domain_list = ['@gmail.com','@hotmail.fr','@hotmail.com','@orange.fr','@outlook.com','@outlook.fr']
+        for domain in domain_list:
+            a = mail_check.verify(i.replace('@','')+domain)
+            if a == True:
+                temp.append(i.replace('@','')+domain)
+        if len(temp) == 0:
+            tree.create_node(i,parent=665847555858)
+        else:
+            tree.create_node(i,number_sk,parent=665847555858)
+            for temp_mail in temp:
+                tree.create_node(temp_mail,parent=number_sk)
 # Daprofiler check skype
 if skype_results is not None:
     social_medias.append('.')
@@ -627,7 +636,7 @@ if possible_mail is not None:
                             tree.create_node('Leak Name : {}'.format(leak_name),parent=number_pass)
                             tree.create_node('Leak Date : {}'.format(leak_date),parent=number_pass)
             data_export['Emails']['HighProbEmails'] = no_doubles
-        nb= str((len(possible_mail)))
+        nb= str((len(possible_mail)))          
         if pin2mail is not None:
             tree.create_node('[+++] Very high probability',45451451545545155154,parent=146)
             for i in pin2mail:
@@ -665,7 +674,7 @@ if json_print == "true" or json_print == "yes" or json_print == "oui":
     print('-- JSON END --')
 else:    
     tree.show()
-    
+
 data_file.close()
 try:
     with open(f'Reports/{folder_name}/{name}_{pren}.json','w',encoding='utf8') as f:
