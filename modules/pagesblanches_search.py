@@ -1,7 +1,3 @@
-import requests, bs4, colorama
-from colorama import Fore
-from bs4      import BeautifulSoup
-
 import requests, bs4
 from bs4      import BeautifulSoup
 
