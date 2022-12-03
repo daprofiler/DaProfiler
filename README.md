@@ -1,5 +1,6 @@
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/TheRealDalunacrobate/daprofiler)
+![alt text](https://github.com/daprofiler/DaProfiler/blob/main/files/DaProfiler_Logo.png?raw=true)
+
+
 ![](https://visitor-badge.laobi.icu/badge?page_id=TheRealDalunacrobate.daprofiler)
 
 DaProfiler is an OSINT tool allowing you to collect certain information about yourself in order to rectify by rgpd requests the traces you may have left on the net.
