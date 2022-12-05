@@ -1,24 +1,4 @@
 from colorama.initialise import init
-from update_check import update
-
-## ------------------------- Update the code  -------------------------
-def update_funct():
-    print("\nUpdating Modules ...\n")
-    update('modules/linkedin_search.py','https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/linkedin_search.py')
-    update("modules/visual/logging.py","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/visual/logging.py")
-    update("modules/copainsdavant_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/copainsdavant_search.py")
-    update("modules/death_records.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/death_records.py")
-    update("modules/dirigeants_bfmtv.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/dirigeants_bfmtv.py")
-    update("modules/facebook_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/facebook_search.py")
-    update("modules/mail_check.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/mail_check.py")
-    update("modules/mail_gen.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/mail_gen.py")
-    update("modules/pagesblanches_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/pagesblanches_search.py")
-    update("modules/skype_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/skype_search.py")
-    update("modules/twitter_search.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/twitter_search.py")
-    update("modules/report.json","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/report.json")
-    update("profiler.py", "https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/profiler.py")
-    update("modules/mail_domain.txt","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/modules/mail_domain.txt")
-    update("requirements.txt","https://raw.githubusercontent.com/TheRealDalunacrobate/DaProfiler/main/requirements.txt")
 
 from json import decoder
 import threading, time, colorama, treelib, random, sys, os, argparse, json, requests, webbrowser, socketio, string
@@ -28,20 +8,20 @@ from treelib    import Node, Tree
 from colorama   import Fore, Back, Style, init
 from statistics import mean
 init(autoreset=True)
-from modules  import skype_search
-from modules  import copainsdavant_search
-from modules  import instagram_search
-from modules  import twitter_search
-from modules  import facebook_search
-from modules  import linkedin_search
-from modules  import dirigeants_bfmtv
-from modules  import death_records
-from modules  import pagesblanches_search
-from modules  import mail_gen
-from modules  import scylla_sh
-from modules  import mail_check
-from modules  import last_diplomes
-from modules  import soundcloud
+from modules.social_medias  import skype_search
+from modules.social_medias  import copainsdavant_search
+from modules.social_medias  import instagram_search
+from modules.social_medias  import twitter_search
+from modules.social_medias  import facebook_search
+from modules.social_medias  import linkedin_search
+from modules.official_documents  import dirigeants_bfmtv
+from modules.official_documents  import death_records
+from modules.official_documents  import pagesblanches_search
+from modules.mail  import mail_gen
+from modules.mail  import scylla_sh
+from modules.mail  import mail_check
+from modules.diplomes  import last_diplomes
+from modules.social_medias  import soundcloud
 from modules.visual      import logging
 from modules.api_modules import leakcheck_net
 
@@ -85,7 +65,6 @@ banner()
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
-parser.add_argument('-u','--update',help="Update DaProfiler")
 parser.add_argument('-json','--json',help="Print result in json")
 parser.add_argument('-zp','--zp',help="Zip code (Optional)")
 
@@ -94,7 +73,6 @@ args = parser.parse_args()
 # Set the vars
 name       = (args.lastname)
 pren       = (args.name)
-do_upgrade = (args.update)
 json_print = (args.json)
 zip_code   = (args.zp)
 
@@ -685,9 +663,3 @@ except FileNotFoundError:
     with open(f'Reports/{folder_name}/{name}_{pren}.json','w',encoding='utf8') as f:
         json.dump(data_export,f,indent=4,ensure_ascii=False)
         f.close()
-
-try:
-    if do_upgrade.lower() == "true":
-        update_funct()
-except:
-    pass
