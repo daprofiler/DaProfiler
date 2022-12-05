@@ -1,0 +1,399 @@
+06000:Free Mobile
+06001:Orange
+06002:SFR
+06003:Bouygues Telecom
+06006:Free Mobile
+06007:SFR
+06008:Orange France
+06009:Bouygues Telecom
+0601:SFR
+06020:Omea Telecom5 SFR et Orange
+06021:Omea Telecom5 SFR et Orange
+0602:SFR
+0603:SFR
+0602:SFR et Orange
+06026:SFR et Orange
+06027:SFR et Orange
+06028:SFR et Orange
+06029:SFR et Orange
+0603:SFR
+06040:SFR
+06041:SFR
+06044:SFR
+0604:SFR
+06045:SFR
+06046:SFR
+06047:SFR
+06048:SFR
+06049:SFR
+06050:Auchan Telecom6 SFR
+06051:Auchan Telecom6 SFR
+06052:Auchan Telecom6 SFR
+06053:Auchan Telecom6 SFR
+06054:Auchan Telecom6 SFR
+06055:LycaMobile7 Bouygues Telecom
+06056:LycaMobile7 Bouygues Telecom
+06057:LycaMobile7 Bouygues Telecom
+06058:LycaMobile7 Bouygues Telecom
+06059:LycaMobile7 Bouygues Telecom
+06064:Afone6 SFR
+06065:NRJ Mobile6 SFR
+06066:NRJ Mobile6 SFR
+06067:NRJ Mobile6 SFR
+06068:NRJ Mobile6 SFR
+06069:NRJ Mobile6 SFR
+0607:Orange France
+0608:Orange France
+0609:SFR
+061:SFR
+062:SFR
+0630:Orange France
+0631:Orange France
+0632:Orange France
+0633:Orange France
+0634:SFR
+0635:SFR
+06360:NRJ Mobile6 SFR
+06361:NRJ Mobile6 SFR
+06362:NRJ Mobile6 SFR
+06363:NRJ Mobile6 SFR
+06365:NRJ Mobile6 SFR
+06366:NRJ Mobile6 SFR
+06367:NRJ Mobile6 SFR
+06368:NRJ Mobile6 SFR
+06369:NRJ Mobile6 SFR
+0637:Orange France
+063801:Prixtel6 SFR
+063802:Prixtel6 SFR
+063803:Prixtel6 SFR
+063804:Prixtel6 SFR
+063805:Prixtel6 SFR
+06381:Orange France
+06382:Orange France
+06383:Orange France
+06384:Orange France
+06385:Orange France
+06386:Orange France
+06387:Orange France
+06388:Orange France
+06389:Orange France
+064005:SFR
+064006:SFR
+064007:SFR
+064008:SFR
+064009:SFR
+06401:Orange France
+06402:Orange France
+06403:Orange France
+06404:Orange France
+06405:Orange France
+06406:Orange France
+06407:Orange France
+06408:Orange France
+06409:Orange France
+06410:SFR
+06411:SFR
+06412:SFR
+06413:SFR
+06414:SFR
+06415:SFR
+064160:SFR
+064161:SFR
+064164:SFR
+06417:NRJMobile SFR
+06418:LaPosteMobile SFR
+06419:LaPosteMobile SFR
+0642:Orange France
+0643:Orange France
+06440:LaPosteMobile SFR
+04441:Orange France
+06442:Orange France
+06443:Orange France
+06444:Bouygues Telecom
+06445:Bouygues Telecom
+06446:Bouygues Telecom
+06447:LaPosteMobile SFR
+06448:LaPosteMobile SFR
+06449:LaPosteMobile SFR
+0645:Orange France
+0646:SFR
+0647:Orange France
+0648:Orange France
+06490:SFR et Orange
+06491:SFR et Orange
+06492:SFR et Orange
+06493:SFR et Orange
+06494:SFR et Orange
+064951:SFR et Orange
+064952:SFR et Orange
+064953:SFR et Orange
+064954:SFR et Orange
+064955:SFR et Orange
+064956:SFR et Orange
+064957:SFR et Orange
+064958:SFR et Orange
+064959:SFR et Orange
+06496:SFR et Orange
+06497:SFR et Orange
+09498:SFR et Orange
+064990:Bouygues Telecom
+064991:Bouygues Telecom
+064992:SFR et Orange
+064993:SFR et Orange
+064995:SFR
+064998:SFR
+064999:SFR
+0650:Bouygues Telecom
+0651:Free Mobile
+0652:Free Mobile
+06530:Bouygues Telecom
+06531:Bouygues Telecom
+06532:Bouygues Telecom
+06533:Bouygues Telecom
+06534:Bouygues Telecom
+06535:Free Mobile
+06536:Free Mobile
+06537:Free Mobile
+06538:Free Mobile
+06539:Free Mobile
+0654:Orange France
+0655:SFR
+065666:Prixtel6 SFR
+065667:Prixtel6 SFR
+065668:Prixtel6 SFR
+065669:Prixtel6 SFR
+06567:LaPosteMobile SFR
+06568:LaPosteMobile SFR
+0658:Bouygues Telecom ou Free
+0659::Bouygues Telecom
+0660:Bouygues Telecom
+0661:Bouygues Telecom
+0662:Bouygues Telecom
+0663:Bouygues Telecom
+0664:Bouygues Telecom
+0665:Bouygues Telecom
+0666:Bouygues Telecom
+0667:Bouygues Telecom
+0668:Bouygues Telecom
+0669:Bouygues Telecom
+06690:Bouygues Telecom
+06691:Bouygues Telecom
+06692:Bouygues Telecom
+06693:Bouygues Telecom
+06694:Bouygues Telecom
+06695:Bouygues Telecom
+06696:Bouygues Telecom
+06697:Bouygues Telecom
+06698:SFR
+06699:Bouygues Telecom
+067:Orange France
+068:Orange France
+0695:Free mobile
+0698:Bouygues Telecom
+0699:Bouygues Telecom
+075000:Sisteer6 SFR	
+075001:Sisteer6 SFR
+075002:Sisteer6 SFR
+075003:Sisteer6 SFR
+075004:Sisteer6 SFR
+075005:Sisteer6 SFR
+075006:Sisteer6 SFR
+075007:Sisteer6 SFR
+075008:SFR
+075009:SFR
+07501:SFR
+07502:SFR et Orange
+07503:SFR et Orange
+07504:SFR et Orange
+075050:SFR
+075051:SFR
+075052:SFR
+075053:SFR
+075054:SFR
+075055:SFR
+075056:SFR
+075057:SFR
+075058:SFR
+075059:SFR
+075060:SFR
+075061:SFR et Orange
+075062:SFR et Orange
+075063:SFR et Orange
+075064:SFR et Orange
+075065:SFR et Orange
+075066:SFR et Orange
+075067:SFR et Orange
+075068:SFR et Orange
+075069:SFR et Orange
+075070:SFR
+075071:Orange France
+075072:Orange France
+07508:SFR et Orange
+07509:SFR et Orange
+07510:Bouygues Telecom
+07511:Bouygues Telecom
+07512:Bouygues Telecom
+07511:Bouygues Telecom
+07513:Bouygues Telecom
+07514:Bouygues Telecom
+07515:Bouygues Telecom
+07516:SFR et Orange
+075200:SFR
+075201:SFR
+075202:SFR
+075203:SFR
+075204:SFR
+075205:SFR
+075206:SFR
+07521:Bouygues Telecom
+07522:Bouygues Telecom
+07523:Bouygues Telecom
+07524:Bouygues Telecom
+07525:Bouygues Telecom
+0753:Lycamobile7 Bouygues Telecom
+075432:Sisteer6 SFR
+075550:Orange
+075551:Orange
+075552:Orange
+075553:Orange
+075554:Orange
+075555:Sisteer6 SFR
+075556:Bouygues Telecom
+075557:Bouygues Telecom
+075859:SFR
+075558:SFR
+075566:Sisteer6 SFR
+075567:SFR
+075568:SFR
+075598:SFR
+075707:SFR et Orange
+075717:SFR et Orange
+075750:SFR
+075751:SFR
+075752:SFR
+075753:SFR
+075754:SFR
+075755:SFR
+075756:SFR
+075757:SFR
+075758:SFR
+075759:Acropolis Telecom6 - SFR
+075760:SFR
+075761:SFR
+075762:SFR
+075763:SFR
+075764:SFR
+075765:SFR
+075766:SFR
+075767:SFR
+075768:SFR
+075969:SFR
+075777:SFR
+075778:SFR
+075787:SFR
+0759:SFR
+076000:Bouygues Telecom
+076001:Bouygues Telecom
+076002:Bouygues Telecom
+076003:Bouygues Telecom
+076004:Bouygues Telecom
+076005:Bouygues Telecom
+076006:Bouygues Telecom
+076007:Bouygues Telecom
+076008:Bouygues Telecom
+076009:Bouygues Telecom
+07601:Bouygues Telecom
+07602:Bouygues Telecom
+07603:Bouygues Telecom
+07604:Bouygues Telecom
+07605:Bouygues Telecom
+07606:Bouygues Telecom
+07607:Bouygues Telecom
+07608:Bouygues Telecom
+07609:Bouygues Telecom
+0761:Bouygues Telecom
+0762:Bouygues Telecom
+0763:Bouygues Telecom
+0764:Bouygues Telecom
+0766:Free Mobile
+0767:Free Mobile
+0768:Free Mobile
+0769:Free Mobile
+07700:SFR et Orange
+07701:SFR et Orange
+07702:SFR et Orange
+07703:SFR et Orange
+07704:SFR et Orange
+07705:SFR
+07706:SFR
+07707:SFR
+07708:SFR
+07709:SFR
+07705:SFR
+07706:SFR
+07707:SFR
+07708:SFR
+07710:SFR
+07711:SFR
+07712:SFR
+0777:SFR
+0778:SFR
+0779:SFR
+07800:Afone6 SFR
+07801:Afone6 SFR
+07802:Afone6 SFR
+07803:Afone6 SFR
+07804:Afone6 SFR
+07805:Afone6 SFR
+07806:Afone6 SFR
+0781:Free Mobile
+0782:Free Mobile
+0783:Free Mobile
+078413:Orange France
+0785:Orange France
+078600:Orange France
+078601:Orange France
+078602:Orange France
+078603:Orange France
+078604:Orange France
+078605:Orange France
+078606:Orange France
+078607:Orange France
+078608:Orange France
+078609:Orange France
+0786:Orange France
+07861:Orange France
+07862:Orange France
+07863:Orange France
+07864:Orange France
+07865:Orange France
+07866:Orange France
+07867:Orange France
+07868:Orange France
+07869:Orange France
+0787:Orange France
+07870:Orange France
+07871:Orange France
+07872:Orange France
+07873:Orange France
+07874:Orange France
+07875::Orange France
+07876::Orange France
+07877::Orange France
+07878:Orange France
+07879::Orange France
+07872:Orange France
+07873:Orange France
+07874:Orange France
+07875:Orange France
+07876:Orange France
+07877:Orange France
+07878:Orange France
+07879:Orange France
+07880:Orange France
+07881:Orange France
+07882:Orange France
+07883:Orange France
+07884:Orange France
+07885:Orange France
+0789:Orange France

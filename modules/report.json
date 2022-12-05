@@ -1,0 +1,107 @@
+{
+    "Name":false,
+    "LastName":false,
+
+    "UI":{
+        "Pie":{
+            "PersonnalLife":false,
+            "SocialMedias":false
+        },
+        "Bar":{
+            "TwitterFounds":false,
+            "InstagramFounds":false,
+            "FacebookFounds":false,
+            "SkypeFounds":false
+        }
+    },
+
+    "AdressPhone":{
+        "Not_Sure":false,
+        "Exists":false,
+        "FullName":false,
+        "Adress":false,
+        "Phone":false,
+        "PhoneLocation":false
+    },
+
+    "Work":{
+        "Exists":false,
+        "FullName":false,
+        "BornDate":false,
+        "Company":false,
+        "Function":false,
+        "Warrant":false,
+        "Link":false,
+        "Capital":false,
+        "Desc":false
+    },
+    "Diploma_Bac":{
+        "Exists":false,
+        "Link":false,
+        "Academie":false,
+        "Mention":false,
+        "City":false,
+        "Diplome":false
+    },
+    "Diploma_Brevet":{
+        "Exists":false,
+        "Name":false,
+        "Link":false,
+        "Academie":false,
+        "Mention":false,
+        "City":false,
+        "Diplome":false
+    },
+    "DeathRecords":{
+        "Exists":false,
+        "Records":false,
+        "AverageAgeUntilDeath":false
+    },
+
+    "Emails":{
+        "HighProbEmails":false,
+        "PermutatedMailbox":false
+    },
+    "LinkedIN":{
+        "Exists":false,
+        "Job":false,
+        "Location":false,
+        "urnid":false,
+        "Url":false,
+        "Twitters":false,
+        "Birthdate":false,
+        "PhoneNumbers":false
+    },
+    "Facebook":{
+        "Exists":false,
+        "AccountList":false
+    },
+
+    "Skype":{
+        "Exists":false,
+        "AccountList":false
+    },
+
+    "Instagram":{
+        "Exists":false,
+        "AccountList":false
+    },
+
+    "Twitter":{
+        "Exists":false,
+        "AccountList":false
+    },
+    
+    "CopainsDavant":{
+        "Exists":false,
+        "Job":false,
+        "NbKids":false,
+        "FullName":false,
+        "BornDate":false,
+        "Location":false,
+        "FSituation":false,
+        "ProfilePicUrl":false,
+        "ProfileUrl":false,
+        "OtherLocations":false
+    }
+}
