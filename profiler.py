@@ -81,9 +81,6 @@ def randomString(length):
 
 thisIsATmpTokenListener = randomString(25);
 
-
-# Def var
-logging.speculos_lotus()
 possible_usernames = []
 folder_name = "{}_{}".format(pren,name)
 
