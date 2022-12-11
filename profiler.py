@@ -231,7 +231,7 @@ except:
 if avis_deces_results is not None:
     tree.create_node("Death Records",41518181871541514778,parent=1)
     for i in avis_deces_results[:5]:
-        tree.create_node('{} | {}\t| {}'.format(i['Age'],i['Name'],i['Loc'][1:]),parent=41518181871541514778)
+        tree.create_node('{} | {}\t| {}'.format(i['Age'],i['Name'],i['Loc']),parent=41518181871541514778)
     data_export['DeathRecords']['Exists'] = True
     data_export['DeathRecords']['Records'] = avis_deces_results[:5]
     try:
