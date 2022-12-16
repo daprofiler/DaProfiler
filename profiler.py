@@ -145,11 +145,6 @@ try:
             skype_results = None
 
         try:
-            diplomess = last_diplomes.last_diplomes_brevet(name=name,pren=pren)
-        except :
-            diplomess = None
-
-        try:
             diplome_bac = last_diplomes.last_diplomes_bac(name=name,pren=pren)
         except:
             diplome_bac = None
@@ -444,6 +439,10 @@ if skype_results is not None:
 # Diploma printing
 
 try:
+    try:
+        diplomess = last_diplomes.last_diplomes_brevet(name=name,pren=pren)
+    except :
+        diplomess = None
     if diplomess is not None:
         tree.create_node('BREVET DES COLLEGES',452,parent=1)
         tree.create_node('Name     : {}'.format(diplomess['Name']),1816864648,parent=452)
