@@ -1,5 +1,7 @@
-import requests, bs4, json
+import requests, json
 from bs4 import BeautifulSoup
+from modules.face_recognition import face_recon
+from colorama import Fore
 
 def check_response(url):
     r = requests.get(url,allow_redirects=False)
@@ -63,6 +65,13 @@ def copains_davant(name,pren):
                 location_list = None
             if "/anonymousL.jpg" in photo:
                 photo = "None"
+                face_detection = None
+            else:
+                print("🧠 Face detection via CopainsDavant profile picture ...")
+                face_detection = face_recon.check(photo)
+                if face_detection is not None:
+                    print("   ->"+Fore.GREEN+" Face successfully found ! "+Fore.RESET)
+                    face_detection = True
             card = soup.find('section',{'id':'vcard'}).text.strip()
             job = "None"
             nb_kids = "None"
@@ -75,7 +84,7 @@ def copains_davant(name,pren):
                 job = " ".join(job.split()).split(' ')[0]
             if "Enfant" in card:
                 nb_kids = card.split("Enfants :")[1].split(" ")[0]
-            text = {'Other_locations':location_list,'url_full':'{}'.format(profil_url),'familial_situation':str(situation_familiale).replace('Enfants','').replace('Aucune','').strip(),'full_name':str(name_full),'born':str(naissance),'localisation':str(localisation),
+            text = {'Face_detection':face_detection,'Other_locations':location_list,'url_full':'{}'.format(profil_url),'familial_situation':str(situation_familiale).replace('Enfants','').replace('Aucune','').strip(),'full_name':str(name_full),'born':str(naissance),'localisation':str(localisation),
                 "nb_enfants":str(nb_kids).strip(),"Job":str(job).strip(),'pdp':str(photo),    
             }
             return text
