@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 
 # Contact
-Mail : _daluna_pro@protonmail.ch_. <br>
+Mail : _dalunacrobate@daprofiler.com_. <br>
 
 ## Contributions
 All suggestions are welcome.
