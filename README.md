@@ -19,7 +19,7 @@ cd DaProfiler
 pip install -r requirements.txt
 ```
 #### Connect to LinkedIN API
-+ Go to [modules\linkedin_search](https://github.com/daprofiler/DaProfiler/blob/main/modules/linkedin_search.py) then add your creditentials.
++ Go to [modules\linkedin_search](https://github.com/daprofiler/DaProfiler/blob/main/modules/social_medias/linkedin_search.py) then add your creditentials.
 
 ## Demo
 ![alt text](https://i.ibb.co/XSzG90S/Capture-censored.jpg)
