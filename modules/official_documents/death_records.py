@@ -1,3 +1,7 @@
+import profile
+import requests,bs4
+from bs4 import BeautifulSoup
+
 def death_search(name,pren):
     try:
         url = "https://avis-deces.linternaute.com/recherche-avis?q={} {}".format(name,pren)
@@ -26,4 +30,5 @@ def death_search(name,pren):
         else:
             return profile_list
 
-    except KeyboardInter
+    except KeyboardInterrupt:
+        return None
