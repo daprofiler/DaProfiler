@@ -17,7 +17,7 @@ def get_info_from_bio(bio):
         ('☪️','Islam'),
         ('☦️','Orthodox'),
         ('✝️','Christ'),
-        ('🕋','Islam')
+        ('🕉️','Hinduism')
     ]
 
     hobbies = [
