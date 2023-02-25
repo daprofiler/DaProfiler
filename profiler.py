@@ -8,6 +8,7 @@ from treelib    import Node, Tree
 from colorama   import Fore, Back, Style, init
 from statistics import mean
 init(autoreset=True)
+from modules.social_medias  import wattpad_search
 from modules.social_medias  import skype_search
 from modules.social_medias  import copainsdavant_search
 from modules.social_medias  import instagram_search
@@ -24,7 +25,6 @@ from modules.diplomes  import last_diplomes
 from modules.social_medias  import soundcloud
 from modules.visual      import logging
 from modules.api_modules import leakcheck_net
-
 
 banner = False 
 # Opening json report template
@@ -106,8 +106,6 @@ try:
             copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
         except:
             copainsdavant_results = None
-
-
         try:
             facebook_results = facebook_search.facebook_search(name=name,pren=pren)
         except:
@@ -164,6 +162,7 @@ try:
             linkedin_results = None
             
         soundcloud.webdriver_usage(name=name,pren=pren)
+        wattpad_results = wattpad_search.wattpad_module(pren,name)
         possible_mail = mail_gen.check(name=name,pren=pren)
         skype2mail = mail_gen.skype2email(name=name,pren=pren)
         pin2mail = mail_gen.pinterest2email(name=name,pren=pren)
