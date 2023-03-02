@@ -13,4 +13,3 @@ statistics
 python-socketio
 numpy
 cv2
-io
