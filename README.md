@@ -4,9 +4,9 @@
 ![](https://visitor-badge.laobi.icu/badge?page_id=TheRealDalunacrobate.daprofiler)
 
 DaProfiler is an OSINT tool capable of tracing the digital identity of a target via social networks, emails, public information such as directories, business listings, etc.
-DaProfiler is also able to check if a face appears on the profile photos of returned accounts
+DaProfiler is also able to check if a face appears on the profile photos of returned accounts.
 DaProfiler can bring you a lot in the context of a search for email addresses on a French target using various techniques of mail guessing, mail swapping using the first and last name of your target.
-The developers inform you that you are responsible for the uses and actions you make of DaProfiler, this tool is above all a big data awareness tool, created to search for a person with his agreement and allow him to remove malicious traces of his identity. digital to protect themselves.
+The developers inform you that you are responsible for the uses and actions you make of DaProfiler, this tool is above all a big data awareness tool, created to search for a person with his agreement and allow him to remove malicious traces of his digital identity to protect themselves.
 
 Input  : Name , Last Name <br>
 Output : email addresses, landline numbers, physical addresses, social networks, work history, photos, etc.
