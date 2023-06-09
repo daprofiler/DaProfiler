@@ -12,4 +12,4 @@ linkedin-api~=2.0.0a
 statistics
 python-socketio
 numpy
-cv2
+opencv-python
