@@ -353,7 +353,7 @@ def get_profile_infos(profile):
     return dictt
     
 def ig_search(name,pren):
-    url = "https://www.picuki.com/search/{} {}".format(pren,name)
+    url = "https://greatfon.com/search?query={} {}".format(pren,name)
 
     r = requests.get(url=url)
     page = r.content.decode()
@@ -362,12 +362,12 @@ def ig_search(name,pren):
 
     profiles = []
 
-    profiless = soup.find_all('div',{'class':'result-username'})
-    for i in profiless[0:10]:
-        i = str(i)
+    profiless = soup.find_all('a',{'class':'profile-name-link'})
+    for i in profiless[0:5]:
+        i = str(i.text.strip())
         profiles.append(i.replace('<div class="result-username">','').replace('</div>','').strip())
     return profiles
-    
+
 # ============================================================================
 
 """
