@@ -2,7 +2,7 @@ import requests, bs4
 from bs4 import BeautifulSoup
 
 def twitter_search(name,pren):
-    url = "https://www.sotwe.com/search/{} {}".format(pren,name)
+    url = "https://twstalker.com/search/?q={} {}".format(pren,name)
     r = requests.get(url)
     page = r.content
     features = "html.parser"
@@ -10,10 +10,11 @@ def twitter_search(name,pren):
 
     usernames = []
 
-    username = soup.find_all('div',{'class':'v-list-item__subtitle caption'})
+    username = soup.find_all('div',{'class':'user-request-dt'})
     
     for i in username:
-        usernames.append(i.text.strip())
+        i = str(i).split('@')[1].split('</span')[0].replace('\'','')
+        usernames.append('@'+i.strip())
 
     return usernames
 
